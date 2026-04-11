@@ -76,26 +76,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label for="a_enneagram" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
-                                <select id="a_enneagram" name="a_enneagram" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
-                                    <option selected value="">タイプ</option>
-                                    {% for i in range(1, 10) %}
-                                    <option value="{{ i }}" {% if person_a and person_a.enneagram == i|string %}selected{% endif %}>タイプ{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div>
-                                <label for="a_wing" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
-                                <select id="a_wing" name="a_wing" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
-                                    <option selected value="">ウィング</option>
-                                    {% for i in range(1, 10) %}
-                                    <option value="w{{ i }}" {% if person_a and person_a.wing == 'w' ~ i|string %}selected{% endif %}>w{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -145,26 +125,6 @@
                                     <option selected value="">選択してください</option>
                                     {% for bt in blood_types %}
                                     <option value="{{ bt }}" {% if person_b and person_b.blood_type == bt %}selected{% endif %}>{{ bt }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label for="b_enneagram" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
-                                <select id="b_enneagram" name="b_enneagram" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
-                                    <option selected value="">タイプ</option>
-                                    {% for i in range(1, 10) %}
-                                    <option value="{{ i }}" {% if person_b and person_b.enneagram == i|string %}selected{% endif %}>タイプ{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div>
-                                <label for="b_wing" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
-                                <select id="b_wing" name="b_wing" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
-                                    <option selected value="">ウィング</option>
-                                    {% for i in range(1, 10) %}
-                                    <option value="w{{ i }}" {% if person_b and person_b.wing == 'w' ~ i|string %}selected{% endif %}>w{{ i }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
