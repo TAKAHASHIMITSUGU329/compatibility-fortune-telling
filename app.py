@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf.csrf import CSRFProtect
 from datetime import date
 from config import Config
+from sheets import save_to_sheet
 
 logging.basicConfig(level=logging.INFO)
 from calculators import run_all
@@ -170,6 +171,12 @@ def analyze():
         rank, rank_color = "C", "#2e7d32"
     else:
         rank, rank_color = "D", "#757575"
+
+    # Google Spreadsheet に自動保存
+    try:
+        save_to_sheet(person_a, person_b, results, categories, s100, rank, Config)
+    except Exception as e:
+        logging.warning("Spreadsheet保存エラー: %s", e)
 
     return render_template(
         "result.html",

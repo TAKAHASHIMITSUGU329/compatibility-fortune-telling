@@ -1,8 +1,10 @@
+import json
 import os
 from pathlib import Path
 
 _BASE_DIR = Path(__file__).resolve().parent
 _SECRET_KEY_FILE = _BASE_DIR / '.secret_key'
+_SHEETS_CREDS_FILE = _BASE_DIR / '.sheets_creds.json'
 
 
 def _load_or_generate_secret_key() -> str:
@@ -17,8 +19,20 @@ def _load_or_generate_secret_key() -> str:
     return key
 
 
+def _load_sheets_credentials():
+    """Google Sheets用Service Account認証情報を読み込む"""
+    env_json = os.environ.get('GOOGLE_SHEETS_CREDS_JSON')
+    if env_json:
+        return json.loads(env_json)
+    if _SHEETS_CREDS_FILE.exists():
+        return json.loads(_SHEETS_CREDS_FILE.read_text())
+    return None
+
+
 class Config:
     SECRET_KEY = _load_or_generate_secret_key()
     DEBUG = os.environ.get('FLASK_DEBUG', '0') == '1'
     HOST = os.environ.get('FLASK_HOST', '0.0.0.0')
     PORT = int(os.environ.get('FLASK_PORT', '5001'))
+    GOOGLE_SHEETS_CREDS = _load_sheets_credentials()
+    GOOGLE_SHEETS_SPREADSHEET_ID = os.environ.get('GOOGLE_SHEETS_SPREADSHEET_ID')
