@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}相性占い分析ツール{% endblock %}
+
+{% block content %}
+<!-- Hero Header Section -->
+<section class="pt-16 pb-12 px-6 bg-primary text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 20% 30%, rgba(134, 144, 238, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(244, 220, 228, 0.2) 0%, transparent 50%);"></div>
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">相性占い分析ツール</h1>
+        <p class="text-lg md:text-xl font-light text-indigo-200 tracking-wide">多角的な占術であなたの相性を分析します</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="max-w-6xl mx-auto px-6 -mt-10 relative z-20 pb-16">
+    {% if errors %}
+    <div class="bg-error-container text-on-error-container rounded-xl p-4 mb-6" role="alert">
+        <ul class="list-disc list-inside">
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form action="{{ url_for('analyze') }}" method="POST" class="space-y-12">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Person A Card (Male) -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow border-t-4 border-primary">
+                <div class="p-8 space-y-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary" aria-hidden="true">male</span>
+                        <h2 class="text-xl font-headline font-semibold text-on-surface">男性</h2>
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <label for="a_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
+                            <input id="a_name" name="a_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：太郎" type="text" value="{{ person_a.name if person_a else '' }}"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="a_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
+                                <input id="a_birthday" name="a_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.a_birthday %}ring-2 ring-error{% endif %}" required type="date" value="{{ person_a.birthday if person_a and person_a.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.a_birthday %}a_birthday_error{% endif %}"/>
+                                {% if field_errors and field_errors.a_birthday %}<p id="a_birthday_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.a_birthday }}</p>{% endif %}
+                            </div>
+                            <div>
+                                <label for="a_birth_time" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生時刻</label>
+                                <input id="a_birth_time" name="a_birth_time" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" type="time"/>
+                                <p class="text-[10px] text-outline mt-1 italic">任意・不明の場合は空欄</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="a_birthplace" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生地</label>
+                            <input id="a_birthplace" name="a_birthplace" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：東京都新宿区" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="a_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
+                                <select id="a_mbti" name="a_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none {% if field_errors and field_errors.a_mbti %}ring-2 ring-error{% endif %}" required aria-describedby="{% if field_errors and field_errors.a_mbti %}a_mbti_error{% endif %}">
+                                    <option disabled selected value="">選択してください</option>
+                                    {% for t in mbti_types %}
+                                    <option value="{{ t }}" {% if person_a and person_a.mbti == t %}selected{% endif %}>{{ t }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if field_errors and field_errors.a_mbti %}<p id="a_mbti_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.a_mbti }}</p>{% endif %}
+                            </div>
+                            <div>
+                                <label for="a_blood_type" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">血液型</label>
+                                <select id="a_blood_type" name="a_blood_type" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">選択してください</option>
+                                    {% for bt in blood_types %}
+                                    <option value="{{ bt }}" {% if person_a and person_a.blood_type == bt %}selected{% endif %}>{{ bt }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="a_enneagram" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
+                                <select id="a_enneagram" name="a_enneagram" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">タイプ</option>
+                                    {% for i in range(1, 10) %}
+                                    <option value="{{ i }}" {% if person_a and person_a.enneagram == i|string %}selected{% endif %}>タイプ{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <label for="a_wing" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
+                                <select id="a_wing" name="a_wing" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">ウィング</option>
+                                    {% for i in range(1, 10) %}
+                                    <option value="w{{ i }}" {% if person_a and person_a.wing == 'w' ~ i|string %}selected{% endif %}>w{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Person B Card (Female) -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow border-t-4 border-pink-400">
+                <div class="p-8 space-y-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-pink-400" aria-hidden="true">female</span>
+                        <h2 class="text-xl font-headline font-semibold text-on-surface">女性</h2>
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <label for="b_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
+                            <input id="b_name" name="b_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：花子" type="text" value="{{ person_b.name if person_b else '' }}"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="b_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
+                                <input id="b_birthday" name="b_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.b_birthday %}ring-2 ring-error{% endif %}" required type="date" value="{{ person_b.birthday if person_b and person_b.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.b_birthday %}b_birthday_error{% endif %}"/>
+                                {% if field_errors and field_errors.b_birthday %}<p id="b_birthday_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.b_birthday }}</p>{% endif %}
+                            </div>
+                            <div>
+                                <label for="b_birth_time" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生時刻</label>
+                                <input id="b_birth_time" name="b_birth_time" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" type="time"/>
+                                <p class="text-[10px] text-outline mt-1 italic">任意・不明の場合は空欄</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="b_birthplace" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生地</label>
+                            <input id="b_birthplace" name="b_birthplace" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：大阪府大阪市" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="b_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
+                                <select id="b_mbti" name="b_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none {% if field_errors and field_errors.b_mbti %}ring-2 ring-error{% endif %}" required aria-describedby="{% if field_errors and field_errors.b_mbti %}b_mbti_error{% endif %}">
+                                    <option disabled selected value="">選択してください</option>
+                                    {% for t in mbti_types %}
+                                    <option value="{{ t }}" {% if person_b and person_b.mbti == t %}selected{% endif %}>{{ t }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if field_errors and field_errors.b_mbti %}<p id="b_mbti_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.b_mbti }}</p>{% endif %}
+                            </div>
+                            <div>
+                                <label for="b_blood_type" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">血液型</label>
+                                <select id="b_blood_type" name="b_blood_type" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">選択してください</option>
+                                    {% for bt in blood_types %}
+                                    <option value="{{ bt }}" {% if person_b and person_b.blood_type == bt %}selected{% endif %}>{{ bt }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="b_enneagram" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
+                                <select id="b_enneagram" name="b_enneagram" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">タイプ</option>
+                                    {% for i in range(1, 10) %}
+                                    <option value="{{ i }}" {% if person_b and person_b.enneagram == i|string %}selected{% endif %}>タイプ{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <label for="b_wing" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
+                                <select id="b_wing" name="b_wing" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">ウィング</option>
+                                    {% for i in range(1, 10) %}
+                                    <option value="w{{ i }}" {% if person_b and person_b.wing == 'w' ~ i|string %}selected{% endif %}>w{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Action -->
+        <div class="flex flex-col items-center gap-8 py-10">
+            <button id="submit-btn" class="soul-gradient text-white px-16 py-4 rounded-full text-lg font-bold editorial-shadow hover:brightness-110 active:scale-95 transition-all w-full md:w-auto min-w-[280px] disabled:opacity-60 disabled:cursor-not-allowed" type="submit">
+                <span id="submit-text">分析する</span>
+                <span id="submit-loading" class="hidden inline-flex items-center gap-2">
+                    <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                    分析中...
+                </span>
+            </button>
+            <div class="max-w-2xl text-center space-y-4">
+                <p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                    ※ 生年月日とMBTIは必須です。その他は任意ですが、入力するとより精度の高い分析が可能です。
+                </p>
+                <div class="flex justify-center gap-4 opacity-40">
+                    <span class="material-symbols-outlined" aria-hidden="true">stars</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">temp_preferences_custom</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.querySelector('form').addEventListener('submit', function() {
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    document.getElementById('submit-text').classList.add('hidden');
+    document.getElementById('submit-loading').classList.remove('hidden');
+});
+</script>
+{% endblock %}

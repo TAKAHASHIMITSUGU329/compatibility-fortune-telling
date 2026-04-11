@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>相性占い分析ツール | The Celestial Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#25181e",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#8690ee",
+                    "primary": "#000666",
+                    "surface-container": "#eeeef0",
+                    "primary-container": "#1a237e",
+                    "surface-container-high": "#e8e8ea",
+                    "surface-variant": "#e2e2e4",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#a7929a",
+                    "inverse-on-surface": "#f0f0f2",
+                    "inverse-surface": "#2f3132",
+                    "surface-container-highest": "#e2e2e4",
+                    "tertiary-container": "#3a2c32",
+                    "tertiary-fixed": "#f4dce4",
+                    "inverse-primary": "#bdc2ff",
+                    "on-tertiary-fixed-variant": "#524249",
+                    "on-surface-variant": "#454652",
+                    "secondary": "#526069",
+                    "background": "#f9f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f9f9fb",
+                    "tertiary": "#24171d",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#bac9d3",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "on-secondary-fixed": "#0f1d25",
+                    "secondary-fixed": "#d6e5ef",
+                    "on-primary-fixed-variant": "#343d96",
+                    "on-secondary-container": "#56656e",
+                    "surface-bright": "#f9f9fb",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1a1c1d",
+                    "tertiary-fixed-dim": "#d7c1c8",
+                    "surface-dim": "#d9dadc",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e0e0ff",
+                    "on-background": "#1a1c1d",
+                    "secondary-container": "#d3e2ed",
+                    "surface-container-low": "#f3f3f5",
+                    "on-secondary-fixed-variant": "#3b4951",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#4c56af",
+                    "outline": "#767683",
+                    "on-primary-fixed": "#000767",
+                    "outline-variant": "#c6c5d4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope", "Noto Sans JP"],
+                    "body": ["Plus Jakarta Sans", "Noto Sans JP"],
+                    "label": ["Plus Jakarta Sans", "Noto Sans JP"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif; }
+        .editorial-shadow { box-shadow: 0px 12px 32px rgba(26, 35, 126, 0.06); }
+        .soul-gradient { background: linear-gradient(135deg, #000666 0%, #8690ee 100%); }
+        .ghost-border { border: 1px solid rgba(198, 197, 212, 0.2); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-indigo-950/80 backdrop-blur-xl text-indigo-50 fixed top-0 w-full z-50 shadow-[0px_12px_32px_rgba(26,35,126,0.06)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="text-2xl font-light text-white tracking-widest font-headline">The Celestial Editorial</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-indigo-300 hover:opacity-80 transition-opacity" href="#">Oracle</a>
+<a class="text-white font-bold hover:opacity-80 transition-opacity" href="#">Readings</a>
+<a class="text-indigo-300 hover:opacity-80 transition-opacity" href="#">History</a>
+<div class="flex gap-4 ml-4">
+<span class="material-symbols-outlined text-indigo-200 cursor-pointer hover:opacity-80 transition-all scale-95 active:scale-90" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-indigo-200 cursor-pointer hover:opacity-80 transition-all scale-95 active:scale-90" data-icon="settings">settings</span>
+</div>
+</nav>
+</div>
+</header>
+<!-- Hero Header Section -->
+<section class="mt-20 pt-16 pb-12 px-6 bg-primary text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20" data-alt="abstract cosmic background with deep indigo swirls and soft ethereal light particles floating in dark space" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVVNeDBEsuYfHWo5syuHJO3dDej6iGeEB4fk4Eq7l5RuTsD-5kr7L8Ys5bfH5I5tUVcuR-jlPVTRODFe6P0K1L_TwDiVimCd0NTtAmRU5wD9VuTMPMGowoUrrYzPc7Ny9AFcawYo8hbXZRwigU38QE0fQlf9HJax5KD7uXyTqNMmsjNWwhEmZdYKJqNtNVnUmA8DDb3MFV3Yh0-vgE-d4upICVXYmcfl5MlTmTzsC56RwpmPi7fdEXuAl2lbJE-GntLZTuYc0bfC0'); background-size: cover;"></div>
+<div class="relative z-10 max-w-5xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-4">相性占い分析ツール</h1>
+<p class="text-lg md:text-xl font-light text-indigo-200 tracking-wide">多角的な占術であなたの相性を分析します</p>
+</div>
+</section>
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-6 -mt-10 relative z-20">
+<form class="space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+<!-- Person A Card (Male) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow border-t-4 border-primary">
+<div class="p-8 space-y-6">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="male">male</span>
+<h2 class="text-xl font-headline font-semibold text-on-surface">男性（Person A）</h2>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：高橋貢" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error">*</span></label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" required="" type="date"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生時刻</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" type="time"/>
+<p class="text-[10px] text-outline mt-1 italic">任意・不明の場合は空欄</p>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生地</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：東京都港区" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error">*</span></label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none" required="">
+<option disabled="" selected="" value="">選択してください</option>
+<option>INTJ</option><option>INTP</option><option>ENTJ</option><option>ENTP</option>
+<option>INFJ</option><option>INFP</option><option>ENFJ</option><option>ENFP</option>
+<option>ISTJ</option><option>ISFJ</option><option>ESTJ</option><option>ESFJ</option>
+<option>ISTP</option><option>ISFP</option><option>ESTP</option><option>ESFP</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">血液型</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">選択してください</option>
+<option>A型</option><option>B型</option><option>O型</option><option>AB型</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">タイプ</option>
+<option>タイプ1</option><option>タイプ2</option><option>タイプ3</option>
+<option>タイプ4</option><option>タイプ5</option><option>タイプ6</option>
+<option>タイプ7</option><option>タイプ8</option><option>タイプ9</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">ウィング</option>
+<option>w1</option><option>w2</option><option>w3</option>
+<option>w4</option><option>w5</option><option>w6</option>
+<option>w7</option><option>w8</option><option>w9</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Person B Card (Female) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow border-t-4 border-pink-400">
+<div class="p-8 space-y-6">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-pink-400" data-icon="female">female</span>
+<h2 class="text-xl font-headline font-semibold text-on-surface">女性（Person B）</h2>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：なお" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error">*</span></label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" required="" type="date"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生時刻</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all" type="time"/>
+<p class="text-[10px] text-outline mt-1 italic">任意・不明の場合は空欄</p>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">出生地</label>
+<input class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：東京都世田谷区" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error">*</span></label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none" required="">
+<option disabled="" selected="" value="">選択してください</option>
+<option>INTJ</option><option>INTP</option><option>ENTJ</option><option>ENTP</option>
+<option>INFJ</option><option>INFP</option><option>ENFJ</option><option>ENFP</option>
+<option>ISTJ</option><option>ISFJ</option><option>ESTJ</option><option>ESFJ</option>
+<option>ISTP</option><option>ISFP</option><option>ESTP</option><option>ESFP</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">血液型</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">選択してください</option>
+<option>A型</option><option>B型</option><option>O型</option><option>AB型</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">エニアグラム</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">タイプ</option>
+<option>タイプ1</option><option>タイプ2</option><option>タイプ3</option>
+<option>タイプ4</option><option>タイプ5</option><option>タイプ6</option>
+<option>タイプ7</option><option>タイプ8</option><option>タイプ9</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">ウィング</label>
+<select class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+<option selected="" value="">ウィング</option>
+<option>w1</option><option>w2</option><option>w3</option>
+<option>w4</option><option>w5</option><option>w6</option>
+<option>w7</option><option>w8</option><option>w9</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Analysis Action -->
+<div class="flex flex-col items-center gap-8 py-10">
+<button class="soul-gradient text-white px-16 py-4 rounded-full text-lg font-bold editorial-shadow hover:brightness-110 active:scale-95 transition-all w-full md:w-auto min-w-[280px]" type="submit">
+                    分析する
+                </button>
+<div class="max-w-2xl text-center space-y-4">
+<p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                        ※ 生年月日とMBTIは必須です。その他は任意ですが、入力するとより精度の高い分析が可能です。
+                    </p>
+<div class="flex justify-center gap-4 opacity-40">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="material-symbols-outlined" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-slate-50/80 dark:bg-indigo-950/80 backdrop-blur-xl rounded-t-3xl shadow-[0px_-8px_24px_rgba(26,35,126,0.04)]">
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-indigo-400 p-2 hover:bg-slate-100 dark:hover:bg-indigo-900/50">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-plus-jakarta text-[10px] leading-[1.7]">Oracle</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-50 rounded-full px-5 py-2 scale-110 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="auto_stories" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-plus-jakarta text-[10px] leading-[1.7]">Readings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-indigo-400 p-2 hover:bg-slate-100 dark:hover:bg-indigo-900/50">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-plus-jakarta text-[10px] leading-[1.7]">History</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-indigo-400 p-2 hover:bg-slate-100 dark:hover:bg-indigo-900/50">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-plus-jakarta text-[10px] leading-[1.7]">Profile</span>
+</div>
+</nav>
+<!-- Decorative Bottom Gradient -->
+<div class="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-on-primary-container to-tertiary-fixed z-50 md:block hidden"></div>
+</body></html>

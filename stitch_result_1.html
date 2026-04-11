@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1a237e",
+                    "on-secondary-fixed-variant": "#3b4951",
+                    "surface-dim": "#d9dadc",
+                    "outline": "#767683",
+                    "on-tertiary-container": "#a7929a",
+                    "on-tertiary-fixed-variant": "#524249",
+                    "surface-bright": "#f9f9fb",
+                    "inverse-primary": "#bdc2ff",
+                    "secondary-fixed-dim": "#bac9d3",
+                    "outline-variant": "#c6c5d4",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9fb",
+                    "secondary": "#526069",
+                    "surface-container-low": "#f3f3f5",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f0f2",
+                    "on-secondary-fixed": "#0f1d25",
+                    "on-tertiary-fixed": "#25181e",
+                    "surface-variant": "#e2e2e4",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "tertiary-fixed-dim": "#d7c1c8",
+                    "on-surface-variant": "#454652",
+                    "on-primary-container": "#8690ee",
+                    "on-background": "#1a1c1d",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#3a2c32",
+                    "surface-container-high": "#e8e8ea",
+                    "error-container": "#ffdad6",
+                    "primary": "#000666",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e2e2e4",
+                    "secondary-container": "#d3e2ed",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2f3132",
+                    "on-secondary-container": "#56656e",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#24171d",
+                    "primary-fixed": "#e0e0ff",
+                    "on-primary-fixed-variant": "#343d96",
+                    "tertiary-fixed": "#f4dce4",
+                    "surface-tint": "#4c56af",
+                    "secondary-fixed": "#d6e5ef",
+                    "on-surface": "#1a1c1d",
+                    "background": "#f9f9fb",
+                    "surface-container": "#eeeef0",
+                    "on-primary-fixed": "#000767"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope", "Noto Sans JP"],
+                    "body": ["Plus Jakarta Sans", "Noto Sans JP"],
+                    "label": ["Plus Jakarta Sans", "Noto Sans JP"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(24px); }
+        .scale-98-on-press:active { transform: scale(0.98); }
+        .celestial-gradient { background: linear-gradient(135deg, #000666 0%, #8690ee 100%); }
+        .hero-mesh { background: radial-gradient(circle at 20% 30%, rgba(134, 144, 238, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(244, 220, 228, 0.1) 0%, transparent 50%); }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f9f9fb]/80 dark:bg-[#1a1c1d]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full mx-auto shadow-[0px_12px_32px_rgba(26,35,126,0.06)]">
+<div class="text-2xl font-light tracking-tighter text-[#1a237e] dark:text-[#ffffff] font-headline">Celestial Editorial</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#454652] hover:text-[#1a237e] transition-colors font-medium" href="#">My Readings</a>
+<a class="text-[#1a237e] font-semibold border-b-2 border-[#000666]" href="#">Oracles</a>
+<a class="text-[#454652] hover:text-[#1a237e] transition-colors font-medium" href="#">Journal</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-[#f3f3f5]/50 p-2 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-[#f3f3f5]/50 p-2 rounded-full transition-colors">account_circle</span>
+</div>
+</nav>
+<main class="flex-grow pt-24 pb-12">
+<!-- Header Section -->
+<header class="bg-primary-container text-on-primary py-16 px-8 relative overflow-hidden">
+<div class="absolute inset-0 hero-mesh opacity-40"></div>
+<div class="max-w-6xl mx-auto relative z-10">
+<h1 class="text-4xl md:text-5xl font-headline font-light tracking-tighter mb-4 text-center">相性占い分析レポート</h1>
+<p class="text-xl md:text-2xl font-headline text-on-primary-container text-center opacity-90">貢さん × なおさん</p>
+</div>
+</header>
+<!-- Section 1: Summary Card -->
+<div class="max-w-6xl mx-auto px-6 -mt-12">
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(26,35,126,0.06)] p-8 md:p-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Score & Chart -->
+<div class="flex flex-col items-center text-center">
+<div class="inline-flex items-center px-6 py-2 rounded-full bg-primary-fixed text-on-primary-fixed-variant mb-6 font-semibold tracking-wide uppercase text-sm">Overall Compatibility</div>
+<h2 class="text-6xl md:text-7xl font-headline font-extrabold text-primary-container mb-2">88<span class="text-3xl font-light">/100</span></h2>
+<div class="flex gap-1 text-tertiary-fixed-dim mb-8">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<!-- Pseudo Radar Chart Visualization -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto bg-surface-container rounded-full flex items-center justify-center border-4 border-surface-container-low overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: conic-gradient(from 0deg, #1a237e, #8690ee, #f4dce4, #1a237e);"></div>
+<div class="w-full h-full p-4">
+<div class="w-full h-full border-2 border-outline-variant rounded-full flex items-center justify-center opacity-30">
+<div class="w-2/3 h-2/3 border-2 border-outline-variant rounded-full flex items-center justify-center">
+<div class="w-1/3 h-1/3 border-2 border-outline-variant rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-18 scale-75" viewbox="0 0 100 100">
+<polygon fill="rgba(26, 35, 126, 0.4)" points="50,10 85,30 90,70 50,90 10,70 15,30" stroke="#1a237e" stroke-width="2"></polygon>
+</svg>
+</div>
+<!-- Labels Around Chart (Simplified) -->
+<div class="absolute inset-0 text-[10px] font-bold text-on-surface-variant p-4">
+<span class="absolute top-2 left-1/2 -translate-x-1/2">MBTI</span>
+<span class="absolute top-1/4 right-2">宿曜</span>
+<span class="absolute bottom-1/4 right-2">九星</span>
+<span class="absolute bottom-2 left-1/2 -translate-x-1/2">干支</span>
+<span class="absolute bottom-1/4 left-2">血液型</span>
+<span class="absolute top-1/4 left-2">数秘</span>
+</div>
+</div>
+</div>
+<!-- Profile Summaries -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Person A -->
+<div class="p-6 rounded-xl bg-surface-container-low border-l-4 border-primary">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a thoughtful young man with short dark hair in a professional setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB0cfHQ-egbsDVzh1sUZrbTE9BJtOvf-MGVm6u5PMkg8eHBaDdTDgp-aibhkPe_aZKxcZxZ8k5_wlsACaNvr4yce9oDSuhi7Jbyg3iECY1UXYAaAaAj37kCgA33vynDwG9u0unk1nD_0zdVzlPLr6669M037NggHKem_Z1KapFMTFn06gl4hUyme1Nu6Apd8O0VfqbON4iCXszC9Efd4VQMDqJOSBjSi3QzWsYpivGjHCdPNxZE3v9fStykpf5vfAEr2IBOzDZats"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">貢さん</h3>
+<p class="text-xs text-on-surface-variant mb-4">陽のエネルギー / 水の属性</p>
+<ul class="space-y-2 text-sm text-on-surface">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span>MBTI: INTJ</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span>誕生花: アイリス</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span>宿曜: 畢宿</li>
+</ul>
+</div>
+<!-- Person B -->
+<div class="p-6 rounded-xl bg-surface-container-low border-l-4 border-on-primary-container">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a smiling young woman with gentle expression and soft warm lighting on a clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQjJU36JqU2QyByllIiivD1kDsLHP6gU0ga4YxX9dpipnwtxx6G9dvIw-vTV6-FFtUKFWF9GiEQIphyMKgzmXMi0de29BNrtFXxRLDRT_zotXWEBzUPQgMTZvBkvgnY8czskt3cPD7aV7I6h60u5xGlVzs6X3ta9Z5NeyIwZOFzjUgX2LErkUSVTwI4WC695udz6KelxmKOv8Hj5UuQwatzlNTj7WWBhCbE6RwzLOs0wxCma16pRhFRaAgh2-s7GB6yseZq5f3dPg"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">なおさん</h3>
+<p class="text-xs text-on-surface-variant mb-4">陰のエネルギー / 風の属性</p>
+<ul class="space-y-2 text-sm text-on-surface">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-on-primary-container rounded-full"></span>MBTI: ENFP</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-on-primary-container rounded-full"></span>誕生花: スズラン</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-on-primary-container rounded-full"></span>宿曜: 心宿</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Detailed Analysis Cards (Bento Grid) -->
+<div class="max-w-6xl mx-auto px-6 mt-16">
+<h2 class="text-3xl font-headline font-light tracking-tight mb-12 text-on-background border-l-8 border-primary pl-6">カテゴリー別詳細分析</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Category Card: MBTI -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">psychology</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-tertiary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed">psychology</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">MBTI相性分析</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">主要な繋がり</td>
+<td class="py-2 text-right font-medium">補完的成長</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">課題エリア</td>
+<td class="py-2 text-right font-medium">感情の表出法</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">INTJの論理的思考となおさんの創造的直感が混ざり合い、新しい価値観を生み出す最高のペアです。</p>
+</div>
+<!-- Category Card: 四柱推命 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">calendar_month</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-secondary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-fixed">calendar_month</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">四柱推命</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">五行バランス</td>
+<td class="py-2 text-right font-medium">完全調和</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">運気の波</td>
+<td class="py-2 text-right font-medium">同期状態</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">水と風の属性が互いを引き立て、停滞することのない軽やかな運気の流れを作り出しています。</p>
+</div>
+<!-- Category Card: 宿曜占術 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">brightness_4</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-primary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed">brightness_4</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">宿曜占術</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">関係性</td>
+<td class="py-2 text-right font-medium">栄親・中距離</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">縁の深さ</td>
+<td class="py-2 text-right font-medium">深いつながり</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">繁栄をもたらす「栄」と親しみやすさの「親」の関係。長期的なパートナーシップに最適です。</p>
+</div>
+<!-- Category Card: 西洋占星術 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">stars</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-secondary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">stars</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">西洋占星術</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">太陽サイン</td>
+<td class="py-2 text-right font-medium">トライン(120°)</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">月星座合致</td>
+<td class="py-2 text-right font-medium">情緒的理解</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">星の位置が非常に調和的な角度にあり、言葉にせずとも心が通じ合うような安心感があります。</p>
+</div>
+<!-- Category Card: 九星気学 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">grid_view</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-surface-container-high p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-surface">grid_view</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">九星気学</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">本命星</td>
+<td class="py-2 text-right font-medium">六白金星×一白水星</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">相生関係</td>
+<td class="py-2 text-right font-medium">金生水</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">一方が他方を支え、エネルギーを与える「相生」の関係です。一緒にいるだけで活力が増します。</p>
+</div>
+<!-- Category Card: エニアグラム -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">diversity_2</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-tertiary-fixed-dim p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed">diversity_2</span>
+</div>
+<div class="flex text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<h3 class="text-xl font-headline font-bold mb-4">エニアグラム</h3>
+<table class="w-full text-sm mb-6 border-collapse">
+<tbody><tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">タイプ相性</td>
+<td class="py-2 text-right font-medium">タイプ5×タイプ7</td>
+</tr>
+<tr class="border-b border-surface-container">
+<td class="py-2 text-on-surface-variant">相乗効果</td>
+<td class="py-2 text-right font-medium">探求と冒険</td>
+</tr>
+</tbody></table>
+<p class="text-sm leading-relaxed text-on-surface-variant">知識を求める貢さんと、自由を求めるなおさん。お互いの欠点を面白がり、高め合える関係です。</p>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="max-w-6xl mx-auto px-6 mt-20 flex flex-col items-center gap-8">
+<button class="celestial-gradient text-on-primary px-12 py-5 rounded-full font-headline font-bold text-lg shadow-lg hover:brightness-110 scale-98-on-press transition-all flex items-center gap-3">
+<span class="material-symbols-outlined">refresh</span>
+                新しい分析を行う
+            </button>
+<div class="flex gap-4">
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-3 rounded-xl font-medium hover:bg-surface-container-highest transition-colors flex items-center gap-2 scale-98-on-press">
+<span class="material-symbols-outlined text-xl">description</span>
+                    Markdownで出力
+                </button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-3 rounded-xl font-medium hover:bg-surface-container-highest transition-colors flex items-center gap-2 scale-98-on-press">
+<span class="material-symbols-outlined text-xl">picture_as_pdf</span>
+                    PDFで出力
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f3f3f5] dark:bg-[#121212] w-full py-12 px-8 mt-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-[#454652] font-headline">The Celestial Editorial</div>
+<div class="flex gap-8 font-label text-sm">
+<a class="text-[#454652] dark:text-[#c6c5d4] hover:text-[#1a237e] transition-all" href="#">Privacy Policy</a>
+<a class="text-[#454652] dark:text-[#c6c5d4] hover:text-[#1a237e] transition-all" href="#">Terms of Fate</a>
+<a class="text-[#454652] dark:text-[#c6c5d4] hover:text-[#1a237e] transition-all" href="#">Support</a>
+</div>
+<div class="text-[#454652] dark:text-[#c6c5d4] text-xs font-label">
+            © 2024 The Celestial Editorial. The Modern Oracle.
+        </div>
+</footer>
+</body></html>

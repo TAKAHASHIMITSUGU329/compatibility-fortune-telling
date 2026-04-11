@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>{% block title %}相性占い分析ツール{% endblock %} | The Celestial Editorial</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-tertiary-fixed": "#25181e",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#8690ee",
+              "primary": "#000666",
+              "surface-container": "#eeeef0",
+              "primary-container": "#1a237e",
+              "surface-container-high": "#e8e8ea",
+              "surface-variant": "#e2e2e4",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#a7929a",
+              "inverse-on-surface": "#f0f0f2",
+              "inverse-surface": "#2f3132",
+              "surface-container-highest": "#e2e2e4",
+              "tertiary-container": "#3a2c32",
+              "tertiary-fixed": "#f4dce4",
+              "inverse-primary": "#bdc2ff",
+              "on-tertiary-fixed-variant": "#524249",
+              "on-surface-variant": "#454652",
+              "secondary": "#526069",
+              "background": "#f9f9fb",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f9f9fb",
+              "tertiary": "#24171d",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#bac9d3",
+              "primary-fixed-dim": "#bdc2ff",
+              "on-secondary-fixed": "#0f1d25",
+              "secondary-fixed": "#d6e5ef",
+              "on-primary-fixed-variant": "#343d96",
+              "on-secondary-container": "#56656e",
+              "surface-bright": "#f9f9fb",
+              "on-error-container": "#93000a",
+              "on-surface": "#1a1c1d",
+              "tertiary-fixed-dim": "#d7c1c8",
+              "surface-dim": "#d9dadc",
+              "on-tertiary": "#ffffff",
+              "primary-fixed": "#e0e0ff",
+              "on-background": "#1a1c1d",
+              "secondary-container": "#d3e2ed",
+              "surface-container-low": "#f3f3f5",
+              "on-secondary-fixed-variant": "#3b4951",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "surface-tint": "#4c56af",
+              "outline": "#767683",
+              "on-primary-fixed": "#000767",
+              "outline-variant": "#c6c5d4"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "headline": ["Manrope", "Noto Sans JP"],
+              "body": ["Plus Jakarta Sans", "Noto Sans JP"],
+              "label": ["Plus Jakarta Sans", "Noto Sans JP"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif; }
+        .editorial-shadow { box-shadow: 0px 12px 32px rgba(26, 35, 126, 0.06); }
+        .soul-gradient { background: linear-gradient(135deg, #000666 0%, #8690ee 100%); }
+        .ghost-border { border: 1px solid rgba(198, 197, 212, 0.2); }
+    </style>
+    <style media="print">
+        @media print {
+            header, footer, .fixed, .no-print { display: none !important; }
+            body { background: white; font-size: 12px; }
+            .editorial-shadow { box-shadow: none; }
+            .soul-gradient { background: #333; }
+            details { break-inside: avoid; }
+            details[open] > div { display: block; }
+            canvas { max-width: 300px; max-height: 300px; }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header class="bg-indigo-950/80 backdrop-blur-xl text-indigo-50 fixed top-0 w-full z-50 shadow-[0px_12px_32px_rgba(26,35,126,0.06)]">
+        <div class="flex justify-between items-center px-6 py-4 w-full">
+            <a href="/" class="text-2xl font-light text-white tracking-widest font-headline">The Celestial Editorial</a>
+            <nav class="hidden md:flex gap-8 items-center">
+                <a class="text-white font-bold hover:opacity-80 transition-opacity" href="/">Readings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#f3f3f5] w-full py-8 px-8 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+            <div class="text-lg font-bold text-[#454652] font-headline">The Celestial Editorial</div>
+            <div class="text-[#454652] text-xs font-label">Phase 1 MVP</div>
+        </div>
+    </footer>
+
+    <!-- Decorative Bottom Gradient -->
+    <div class="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-on-primary-container to-tertiary-fixed z-50 md:block hidden"></div>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

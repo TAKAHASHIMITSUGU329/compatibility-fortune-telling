@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% block title %}分析レポート — {{ person_a.name }}さん × {{ person_b.name }}さん{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .rank-badge {
+        font-size: 2.5rem;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .score-bar {
+        height: 6px;
+        border-radius: 3px;
+        background: #e2e2e4;
+        overflow: hidden;
+    }
+    .score-bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cat-card:hover { transform: translateY(-2px); }
+    .detail-row:nth-child(odd) { background: rgba(238,238,240,0.5); }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Header -->
+<header class="bg-primary pt-12 pb-28 px-6 md:px-12 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 20% 30%, rgba(134, 144, 238, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(244, 220, 228, 0.3) 0%, transparent 50%);"></div>
+    <div class="relative z-10 max-w-4xl mx-auto">
+        <span class="text-on-primary-container text-xs font-bold tracking-[0.25em] uppercase mb-4 block">Compatibility Report</span>
+        <h1 class="text-3xl md:text-5xl font-light text-white font-headline leading-tight">
+            {{ person_a.name }}さん <span class="text-on-primary-container">&times;</span> {{ person_b.name }}さん
+        </h1>
+        <p class="text-indigo-300 text-sm mt-3 tracking-wide">{{ results|length }} methods analyzed</p>
+    </div>
+</header>
+
+<!-- Calculator Error Notice -->
+{% if calc_errors %}
+<section class="max-w-5xl mx-auto px-4 md:px-6 -mt-12 mb-4 relative z-20">
+    <div class="bg-amber-50 border border-amber-200 rounded-xl px-5 py-3 flex items-start gap-3">
+        <span class="material-symbols-outlined text-amber-600 text-lg mt-0.5 flex-shrink-0">warning</span>
+        <div>
+            <p class="text-sm font-bold text-amber-800">{{ calc_errors|length }}件の計算でエラーが発生しました</p>
+            <p class="text-xs text-amber-700 mt-1">対象: {{ calc_errors|join(', ') }}</p>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Score Hero Card -->
+<section class="max-w-5xl mx-auto px-4 md:px-6 {% if calc_errors %}-mt-0{% else %}-mt-20{% endif %} relative z-20">
+    <div class="bg-surface-container-lowest rounded-2xl editorial-shadow overflow-hidden">
+        <div class="flex flex-col lg:flex-row">
+            <!-- Left: Score -->
+            <div class="flex-1 p-8 md:p-12 flex flex-col items-center lg:items-start justify-center">
+                <div class="flex items-end gap-5 mb-4">
+                    <div id="total-score" class="text-8xl font-extrabold font-headline tracking-tighter text-primary leading-none" data-score="{{ total_score_100 }}">{{ total_score_100 }}</div>
+                    <div class="flex flex-col items-start gap-1 pb-2">
+                        <span class="text-on-surface-variant text-sm font-medium">/100</span>
+                        <div class="flex text-amber-400" role="img" aria-label="{{ total_score }}点（5点満点）">
+                            {% for i in range(5) %}
+                            <span class="material-symbols-outlined text-lg" aria-hidden="true" style="font-variation-settings: 'FILL' {{ 1 if i < total_score else 0 }};">star</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="rank-badge" class="rank-badge px-4 py-1 rounded-lg text-white ml-2" style="background: {{ rank_color }};" role="img" aria-label="ランク{{ rank }}" data-rank="{{ rank }}">{{ rank }}</div>
+                </div>
+                <p class="text-on-surface-variant text-sm leading-relaxed max-w-md text-center lg:text-left">
+                    {% if total_score >= 4 %}
+                    多くの占術・心理学フレームワークが高相性を示しています。互いを高め合える理想的な関係です。
+                    {% elif total_score >= 3 %}
+                    良好な相性です。いくつかの占術で素晴らしい結果が出ており、互いの長所を活かし合える関係です。
+                    {% else %}
+                    異なる個性を持つ二人ですが、違いを理解し尊重することで、深い絆を築いていけるでしょう。
+                    {% endif %}
+                </p>
+                <!-- Score Distribution Mini -->
+                <div class="flex gap-2 mt-5 text-xs text-on-surface-variant">
+                    {% set high = results|selectattr("score_100", "ge", 85)|list|length %}
+                    {% set mid = results|selectattr("score_100", "ge", 70)|list|length - high %}
+                    {% set low = results|length - high - mid %}
+                    <span class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 font-bold">85+: {{ high }}件</span>
+                    <span class="px-2 py-1 rounded bg-blue-50 text-blue-700 font-bold">70-84: {{ mid }}件</span>
+                    <span class="px-2 py-1 rounded bg-gray-100 text-gray-600 font-bold">~69: {{ low }}件</span>
+                </div>
+            </div>
+
+            <!-- Right: Radar Chart -->
+            <div class="lg:w-[420px] p-6 md:p-8 flex items-center justify-center bg-gradient-to-br from-surface-container-lowest to-surface-container-low">
+                <div class="w-full max-w-[380px] aspect-square">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Category Summary Cards -->
+<section class="max-w-5xl mx-auto px-4 md:px-6 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        {% for cat in categories %}
+        <a href="#cat-{{ loop.index }}" class="cat-card bg-surface-container-lowest rounded-xl p-4 editorial-shadow transition-all duration-200 text-center group cursor-pointer">
+            <div class="text-3xl font-extrabold font-headline text-primary mb-1">{{ cat.score }}</div>
+            <div class="text-xs font-bold text-on-surface truncate">{{ cat.name }}</div>
+            <div class="text-[10px] text-on-surface-variant mt-1">{{ cat.count }}手法</div>
+            <div class="score-bar mt-2">
+                <div class="score-bar-fill {% if cat.score >= 85 %}bg-emerald-500{% elif cat.score >= 70 %}bg-blue-500{% else %}bg-gray-400{% endif %}" style="width: {{ cat.score }}%;"></div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Detailed Results by Category -->
+<section class="max-w-5xl mx-auto px-4 md:px-6 pb-16">
+    {% for cat in categories %}
+    <div id="cat-{{ loop.index }}" class="mb-10">
+        <!-- Category Header -->
+        <div class="flex items-center gap-4 mb-5">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl font-extrabold font-headline text-primary">{{ cat.score }}</span>
+                <div>
+                    <h2 class="text-lg font-bold text-on-surface">{{ cat.name }}</h2>
+                    <span class="text-xs text-on-surface-variant">{{ cat.count }}手法の平均</span>
+                </div>
+            </div>
+            <div class="h-px flex-1 bg-outline-variant/20"></div>
+        </div>
+
+        <!-- Method Cards -->
+        <div class="space-y-3">
+            {% for result in cat.results %}
+            <details class="bg-surface-container-lowest rounded-xl editorial-shadow overflow-hidden group">
+                <summary class="w-full px-5 py-4 flex items-center gap-4 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <!-- Score Circle -->
+                    <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm text-white
+                        {% if result.score_100 >= 90 %}bg-emerald-500
+                        {% elif result.score_100 >= 80 %}bg-blue-500
+                        {% elif result.score_100 >= 70 %}bg-indigo-400
+                        {% else %}bg-gray-400{% endif %}">
+                        {{ result.score_100 }}
+                    </div>
+                    <!-- Name & Score Bar -->
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-on-surface truncate">{{ result.name }}</h3>
+                            <div class="flex text-amber-400 ml-2 flex-shrink-0" role="img" aria-label="{{ result.score }}点（5点満点）">
+                                {% for i in range(5) %}
+                                <span class="material-symbols-outlined text-xs" aria-hidden="true" style="font-variation-settings: 'FILL' {{ 1 if i < result.score else 0 }};">star</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="score-bar mt-2">
+                            <div class="score-bar-fill {% if result.score_100 >= 90 %}bg-emerald-500{% elif result.score_100 >= 80 %}bg-blue-500{% elif result.score_100 >= 70 %}bg-indigo-400{% else %}bg-gray-400{% endif %}" style="width: {{ result.score_100 }}%;"></div>
+                        </div>
+                    </div>
+                    <!-- Expand Icon -->
+                    <span class="material-symbols-outlined text-on-surface-variant text-lg transition-transform duration-200 flex-shrink-0 group-open:rotate-180" aria-hidden="true">expand_more</span>
+                </summary>
+
+                <!-- Body -->
+                <div class="px-5 pb-5 pt-1">
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-3 pl-[60px]">{{ result.summary }}</p>
+
+                    {% if result.highlights %}
+                    <div class="pl-[60px] mb-3">
+                        {% for highlight in result.highlights %}
+                        <div class="detail-row flex items-start gap-2 text-xs text-on-surface-variant py-1.5 px-2 rounded">
+                            <span class="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0"></span>
+                            <span>{{ highlight }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if result.advice %}
+                    <div class="ml-[60px] bg-primary/5 rounded-lg p-3 flex gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm mt-0.5 flex-shrink-0">tips_and_updates</span>
+                        <p class="text-xs text-on-surface-variant leading-relaxed">{{ result.advice }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- Action -->
+<section class="max-w-5xl mx-auto px-6 pb-24 flex flex-col sm:flex-row items-center justify-center gap-4">
+    <a href="{{ url_for('index') }}" class="inline-flex items-center gap-2 px-12 py-4 soul-gradient text-white rounded-full font-bold editorial-shadow hover:brightness-110 active:scale-95 transition-all">
+        <span class="material-symbols-outlined">refresh</span>
+        新しい分析を行う
+    </a>
+    <button onclick="window.print()" class="no-print inline-flex items-center gap-2 px-8 py-4 bg-surface-container-high text-on-surface rounded-full font-bold editorial-shadow hover:bg-surface-container-highest active:scale-95 transition-all">
+        <span class="material-symbols-outlined">print</span>
+        印刷 / PDF保存
+    </button>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: {{ chart_labels | tojson }},
+            datasets: [{
+                label: '相性スコア',
+                data: {{ chart_data | tojson }},
+                backgroundColor: 'rgba(26, 35, 126, 0.12)',
+                borderColor: '#1a237e',
+                borderWidth: 2.5,
+                pointBackgroundColor: '#1a237e',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 20,
+                        font: { size: 9, family: "'Noto Sans JP', sans-serif" },
+                        backdropColor: 'transparent',
+                        color: '#999',
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 13,
+                            family: "'Noto Sans JP', sans-serif",
+                            weight: '700',
+                        },
+                        color: '#1a1c1d',
+                        padding: 16,
+                    },
+                    grid: {
+                        color: 'rgba(198, 197, 212, 0.25)',
+                        lineWidth: 1,
+                    },
+                    angleLines: {
+                        color: 'rgba(198, 197, 212, 0.25)',
+                        lineWidth: 1,
+                    },
+                },
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1a237e',
+                    titleFont: { family: "'Noto Sans JP', sans-serif", size: 13, weight: '700' },
+                    bodyFont: { family: "'Noto Sans JP', sans-serif", size: 12 },
+                    padding: 12,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.r + '点';
+                        }
+                    }
+                },
+            },
+        }
+    });
+
+    // Animate score bars on scroll
+    const bars = document.querySelectorAll('.score-bar-fill');
+    bars.forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = w; }, 200);
+    });
+});
+</script>
+{% endblock %}
