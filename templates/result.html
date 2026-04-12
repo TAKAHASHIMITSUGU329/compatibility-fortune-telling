@@ -323,6 +323,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Apply dark theme background (override Tailwind bg-surface)
+    document.body.style.background = 'linear-gradient(170deg, #0a0a1a 0%, #010733 40%, #0d0d2b 70%, #0a0a1a 100%)';
+    document.body.style.color = '#e8e8f0';
+
     // Animate score bars on scroll
     const bars = document.querySelectorAll('.score-bar-fill');
     bars.forEach(bar => {
