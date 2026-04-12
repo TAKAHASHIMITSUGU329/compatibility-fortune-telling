@@ -89,18 +89,10 @@ def analyze():
 
     # バリデーション（フィールド単位）
     field_errors = {}
-    if not person_a["birthday"]:
-        field_errors["a_birthday"] = "生年月日を入力してください"
-    elif person_a["birthday"] > date.today():
+    if person_a["birthday"] and person_a["birthday"] > date.today():
         field_errors["a_birthday"] = "未来の日付は入力できません"
-    if not person_b["birthday"]:
-        field_errors["b_birthday"] = "生年月日を入力してください"
-    elif person_b["birthday"] > date.today():
+    if person_b["birthday"] and person_b["birthday"] > date.today():
         field_errors["b_birthday"] = "未来の日付は入力できません"
-    if not person_a["mbti"]:
-        field_errors["a_mbti"] = "MBTIを選択してください"
-    if not person_b["mbti"]:
-        field_errors["b_mbti"] = "MBTIを選択してください"
 
     if field_errors:
         return render_template(

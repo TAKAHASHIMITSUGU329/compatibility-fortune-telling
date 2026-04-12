@@ -57,8 +57,8 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label for="a_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
-                                <input id="a_birthday" name="a_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.a_birthday %}ring-2 ring-error{% endif %}" required type="date" value="{{ person_a.birthday if person_a and person_a.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.a_birthday %}a_birthday_error{% endif %}"/>
+                                <label for="a_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日</label>
+                                <input id="a_birthday" name="a_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.a_birthday %}ring-2 ring-error{% endif %}" type="date" value="{{ person_a.birthday if person_a and person_a.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.a_birthday %}a_birthday_error{% endif %}"/>
                                 {% if field_errors and field_errors.a_birthday %}<p id="a_birthday_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.a_birthday }}</p>{% endif %}
                             </div>
                             <div>
@@ -73,9 +73,9 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label for="a_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
-                                <select id="a_mbti" name="a_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none {% if field_errors and field_errors.a_mbti %}ring-2 ring-error{% endif %}" required aria-describedby="{% if field_errors and field_errors.a_mbti %}a_mbti_error{% endif %}">
-                                    <option disabled selected value="">選択してください</option>
+                                <label for="a_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI</label>
+                                <select id="a_mbti" name="a_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">選択してください</option>
                                     {% for t in mbti_types %}
                                     <option value="{{ t }}" {% if person_a and person_a.mbti == t %}selected{% endif %}>{{ t }}</option>
                                     {% endfor %}
@@ -126,8 +126,8 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label for="b_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日 <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
-                                <input id="b_birthday" name="b_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.b_birthday %}ring-2 ring-error{% endif %}" required type="date" value="{{ person_b.birthday if person_b and person_b.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.b_birthday %}b_birthday_error{% endif %}"/>
+                                <label for="b_birthday" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">生年月日</label>
+                                <input id="b_birthday" name="b_birthday" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all {% if field_errors and field_errors.b_birthday %}ring-2 ring-error{% endif %}" type="date" value="{{ person_b.birthday if person_b and person_b.birthday else '' }}" aria-describedby="{% if field_errors and field_errors.b_birthday %}b_birthday_error{% endif %}"/>
                                 {% if field_errors and field_errors.b_birthday %}<p id="b_birthday_error" class="text-xs text-error mt-1" role="alert">{{ field_errors.b_birthday }}</p>{% endif %}
                             </div>
                             <div>
@@ -142,9 +142,9 @@
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label for="b_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI <span class="text-error" aria-hidden="true">*</span><span class="sr-only">（必須）</span></label>
-                                <select id="b_mbti" name="b_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none {% if field_errors and field_errors.b_mbti %}ring-2 ring-error{% endif %}" required aria-describedby="{% if field_errors and field_errors.b_mbti %}b_mbti_error{% endif %}">
-                                    <option disabled selected value="">選択してください</option>
+                                <label for="b_mbti" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">MBTI</label>
+                                <select id="b_mbti" name="b_mbti" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all appearance-none">
+                                    <option selected value="">選択してください</option>
                                     {% for t in mbti_types %}
                                     <option value="{{ t }}" {% if person_b and person_b.mbti == t %}selected{% endif %}>{{ t }}</option>
                                     {% endfor %}
@@ -177,7 +177,7 @@
             </button>
             <div class="max-w-2xl text-center space-y-4">
                 <p class="text-sm text-on-surface-variant leading-relaxed font-medium">
-                    ※ 生年月日とMBTIは必須です。その他は任意ですが、入力するとより精度の高い分析が可能です。
+                    ※ すべての項目は任意です。入力が多いほど精度の高い分析が可能です。
                 </p>
                 <div class="flex justify-center gap-4 opacity-40">
                     <span class="material-symbols-outlined" aria-hidden="true">stars</span>
