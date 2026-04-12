@@ -110,5 +110,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_b}のカード: {num_b}番 {card_b['name']}",
             compat_text,
         ],
-        "advice": f"{card_a['name']}と{card_b['name']}の組み合わせは、{compat_text}",
+        "advice": f"{card_a['name']}と{card_b['name']}の組み合わせから、二人の間にある元型的なテーマが明らかになりました。タロットの大アルカナは人生の普遍的な原型（アーキタイプ）を象徴しており、{compat_text}二人のカードが示す象徴を日常の中で意識し、互いの精神的成長を支え合う関係を深めていきましょう。",
     }

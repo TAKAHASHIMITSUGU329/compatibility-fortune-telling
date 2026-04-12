@@ -233,9 +233,11 @@ def calculate(person_a: dict, person_b: dict) -> dict:
         f"夫妻宮の相性: {cat_a} × {cat_b} — {compat_desc}",
     ]
 
-    advice = f"夫妻宮の組み合わせは「{cat_a} × {cat_b}」。{compat_desc}。"
+    advice = f"紫微斗数では、命盤の夫妻宮に入る主星から恋愛・結婚の傾向を読み解きます。お二人の夫妻宮は「{cat_a} × {cat_b}」の組み合わせで、{compat_desc}。"
     if fusai_star_a == fusai_star_b:
-        advice += f"夫妻宮に同じ{fusai_star_a}星が入っており、恋愛観が近いカップルです。"
+        advice += f"さらに夫妻宮に同じ{fusai_star_a}星が入っており、恋愛観や結婚に求めるものが自然と一致しやすい稀有な組み合わせです。互いの価値観を尊重し合うことで、より深い信頼関係を築いていけるでしょう。"
+    else:
+        advice += f"{fusai_star_a}星の「{fusai_trait_a[1]}」と{fusai_star_b}星の「{fusai_trait_b[1]}」は、互いに異なる魅力を持ち合わせています。この違いを補い合うことで、バランスの取れたパートナーシップを育むことができるでしょう。"
 
     return {
         "name": "紫微斗数",

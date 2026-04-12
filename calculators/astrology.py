@@ -447,18 +447,26 @@ def calculate(person_a: dict, person_b: dict) -> dict:
     for a in aspects:
         highlights.append(f"{a['pair']}: {a['aspect']}（{a['angle']}°）— {a['description']}")
 
-    # アドバイス
-    advice_map = {
-        5: "星の配置が最高の調和を示しています。自然体で素晴らしい関係を築けるでしょう。",
-        4: "星の配置がとても良い相性を示しています。お互いの良さを引き出し合える関係です。",
-        3: "星の配置は平均的な相性を示しています。お互いの違いを楽しむ余裕が大切です。",
-        2: "星の配置にやや緊張がありますが、それは成長のチャンスでもあります。",
-        1: "星の配置は挑戦的ですが、努力次第で深い学びのある関係になります。",
-    }
-
     # エレメント情報
     elem_a = SIGN_ELEMENT.get(data_a["sun"], "不明") if data_a["sun"] else "不明"
     elem_b = SIGN_ELEMENT.get(data_b["sun"], "不明") if data_b["sun"] else "不明"
+
+    # アドバイス
+    # モダリティ情報
+    mod_a = SIGN_MODALITY.get(data_a["sun"], "不明") if data_a["sun"] else "不明"
+    mod_b = SIGN_MODALITY.get(data_b["sun"], "不明") if data_b["sun"] else "不明"
+    mod_ja = {"cardinal": "活動宮", "fixed": "不動宮", "mutable": "柔軟宮"}
+    mod_a_ja = mod_ja.get(mod_a, mod_a)
+    mod_b_ja = mod_ja.get(mod_b, mod_b)
+    best_asp_text = f"（最良アスペクト: {best_aspect['pair']}の{best_aspect['aspect']}）" if best_aspect else ""
+
+    advice_map = {
+        5: f"{sun_a_ja}（{elem_a}/{mod_a_ja}）と{sun_b_ja}（{elem_b}/{mod_b_ja}）の惑星配置がトラインやセクスタイルなど調和的なアスペクトを多く形成しています{best_asp_text}。エレメントとモダリティの親和性が高く、支配星同士の共鳴が自然な一体感を生み出します。この天与の調和を土台に、互いの金星・火星の欲求を尊重し合うことで、さらに深い愛情関係を築いていけるでしょう。",
+        4: f"{sun_a_ja}（{elem_a}/{mod_a_ja}）と{sun_b_ja}（{elem_b}/{mod_b_ja}）のシナストリー（二重円）分析で良好なアスペクトが多く確認されました{best_asp_text}。エレメントの相性が互いのエネルギーを増幅させ、モダリティの違いが関係に適度な刺激を与えます。金星と火星のクロスアスペクトを意識し、相手の愛情表現と行動原理を理解することで、さらに関係が深まるでしょう。",
+        3: f"{sun_a_ja}（{elem_a}/{mod_a_ja}）と{sun_b_ja}（{elem_b}/{mod_b_ja}）の星の配置は調和と緊張が混在するパターンです{best_asp_text}。スクエアやオポジションなどの緊張アスペクトは成長の触媒として機能し、異なるエレメント間の摩擦が互いの視野を広げます。相手の支配星が司る価値観を学び、違いを補完関係として活かす姿勢が大切です。",
+        2: f"{sun_a_ja}（{elem_a}/{mod_a_ja}）と{sun_b_ja}（{elem_b}/{mod_b_ja}）の間にスクエアやクインカンクスなど緊張度の高いアスペクトが見られます{best_asp_text}。占星術ではこうした配置を「カルマ的学び」の関係と捉え、困難を通じて魂が磨かれるとされます。互いのエレメントの違いを認め、定期的に感情を言語化する時間を設けることで関係の安定につながります。",
+        1: f"{sun_a_ja}（{elem_a}/{mod_a_ja}）と{sun_b_ja}（{elem_b}/{mod_b_ja}）の惑星配置は挑戦的なアスペクトが多い構成です{best_asp_text}。しかし占星術において困難な配置ほど深い変容をもたらすとされ、オポジションは対極の引力、スクエアは行動への強い動機を生みます。互いの支配星の性質を学び、異なるエレメントの力を取り入れることで、大きな成長を遂げられる関係です。",
+    }
 
     return {
         "name": "西洋占星術",

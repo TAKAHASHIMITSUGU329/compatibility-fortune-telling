@@ -243,7 +243,7 @@ def calculate_love_languages(person_a: dict, person_b: dict) -> dict:
             f"{name_b}の愛の言語: {' > '.join(langs_b)} — {desc_b}",
             f"共通: {', '.join(common) if common else 'なし（違いを理解し合うことが大切）'}",
         ],
-        "advice": f"{name_a}は「{langs_b[0]}」を意識して伝えると{name_b}に響きます。{name_b}は「{langs_a[0]}」を心がけると{name_a}が喜びます。",
+        "advice": f"チャップマン博士の「5つの愛の言語」理論によると、人はそれぞれ固有の愛情表現の優先順位を持ち、相手の言語で愛を伝えないとすれ違いが生じます。{name_a}の第一言語は「{langs_a[0]}」、{name_b}の第一言語は「{langs_b[0]}」であり、{match_text}という結果です。日常的に相手の愛の言語を意識して行動に移すことで、愛情の伝達効率が飛躍的に高まるでしょう。",
     }
 
 
@@ -297,7 +297,7 @@ def calculate_sternberg(person_a: dict, person_b: dict) -> dict:
             f"{name_b}: 親密さ{intimacy_b} / 情熱{passion_b} / コミットメント{commit_b}",
             "目標: 3要素すべてが揃った「完全な愛（Consummate Love）」",
         ],
-        "advice": "親密さは日々の会話で、情熱は新しい体験で、コミットメントは誠実な行動で育てられます。",
+        "advice": f"シュテルンベルグの三角理論では、親密さ・情熱・コミットメントの3要素が揃った「完全な愛（Consummate Love）」を理想とし、要素の偏りが愛の形を決定づけるとされます。{name_a}と{name_b}の三角形は{summary}であり、不足する要素を意識的に育てることが重要です。親密さは日々の深い対話で、情熱は新しい体験の共有で、コミットメントは誠実な約束の積み重ねで強化できます。",
     }
 
 
@@ -356,7 +356,7 @@ def calculate_gottman(person_a: dict, person_b: dict) -> dict:
             "max_risk": labels[max_idx],
         },
         "highlights": highlights,
-        "advice": f"最も注意すべきは「{labels[max_idx]}」。{antidotes[max_idx]}",
+        "advice": f"ゴットマン博士の40年以上にわたる夫婦研究により、関係崩壊を予測する「四騎士」（批判・侮蔑・防衛・石壁）が特定されています。{name_a}と{name_b}の組み合わせでは「{labels[max_idx]}」のリスクが最も高く、これに対する解毒剤の実践が関係維持の鍵となります。具体的には「{antidotes[max_idx]}」を日常的に心がけ、ネガティブ対ポジティブの比率を1対5以上に保つことを目指しましょう。",
     }
 
 
@@ -416,5 +416,5 @@ def calculate_transactional(person_a: dict, person_b: dict) -> dict:
             f"{name_b}: {format_ego(ego_b)}",
             "目指すべきはA↔A（対等な成人同士）のコミュニケーション",
         ],
-        "advice": "NP↔ACパターン（世話焼き×従順）に偏らず、対等な対話を意識しましょう。",
+        "advice": f"エリック・バーンの交流分析理論では、人の心にP（親）・A（成人）・C（子ども）の3つの自我状態が存在し、対人関係のパターンを形成するとされます。{name_a}と{name_b}のエゴグラムはA（成人）バランス{a_balance:.1f}、NP（養育的親）{np_warmth:.1f}の構成であり、A対Aの対等な交流が関係安定の鍵です。NP対ACの補完的交流に偏りすぎず、互いを成熟した個人として尊重する対話を日常に取り入れましょう。",
     }

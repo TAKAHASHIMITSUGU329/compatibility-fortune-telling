@@ -89,7 +89,7 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_b}の誕生花: {flower_b['name']}（花言葉: {flower_b.get('meaning', '')}）",
             compat_text,
         ],
-        "advice": f"お二人の花を一緒に飾ると、素敵なブーケになるでしょう。{compat_text}",
+        "advice": f"{flower_a['name']}の花言葉「{flower_a.get('meaning', '')}」と{flower_b['name']}の花言葉「{flower_b.get('meaning', '')}」が示すように、二人の本質的な資質が花に投影されています。花言葉は古来ヨーロッパの花占い（フロリオグラフィー）に由来し、花の咲く季節や色彩が人の性格と深く結びつくとされます。{compat_text}記念日に互いの誕生花を贈り合い、花言葉に込められた想いを伝え合ってみてください。",
     }
 
 

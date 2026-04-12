@@ -217,8 +217,11 @@ def calculate(person_a: dict, person_b: dict) -> dict:
         highlights.append(f"⚠ {name_b}は現在天中殺期間中（{tenchu_period_b}）。新しい大きな決断は慎重に")
 
     advice_parts = [tenchu_desc + "。"]
+    advice_parts.append(f"算命学の位相法では、日干の五行（{gogyo_a}と{gogyo_b}）の関係から二人の本質的な相性を読み解きます。{gogyo_desc}という関係性は、日常のコミュニケーションや価値観の共有に大きく影響します。")
     if is_tenchu_a or is_tenchu_b:
-        advice_parts.append("天中殺の期間中は守りの姿勢が大切。この時期は関係の土台を固める時と捉えましょう。")
+        advice_parts.append("天中殺は算命学における12年周期の空亡期で、この期間中は守りの姿勢が大切です。新たな大きな決断は避け、関係の土台を固める時と捉えましょう。天中殺が明けた後に大きく飛躍するための準備期間と考えると、この時期も前向きに過ごせます。")
+    else:
+        advice_parts.append("互いの天中殺の時期を把握し、相手が空亡期に入った際には支え合う意識を持つことで、長期的に安定した関係を育めるでしょう。")
 
     return {
         "name": "算命学",

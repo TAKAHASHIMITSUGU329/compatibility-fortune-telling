@@ -244,16 +244,16 @@ def calculate(person_a: dict, person_b: dict) -> dict:
     min_diff_factor = min(diffs, key=diffs.get)
 
     advice_parts.append(
-        f"{FACTOR_NAMES[min_diff_factor]}が最も近く、この点で深い共感が生まれます。"
+        f"ビッグファイブ（OCEAN）モデルの分析により、{FACTOR_NAMES[min_diff_factor]}が最も近い因子であることが判明し、この特性領域で深い共感と相互理解が自然に生まれます。"
     )
     advice_parts.append(
-        f"{FACTOR_NAMES[max_diff_factor]}に最も差があり、互いの違いを理解し尊重することが大切です。"
+        f"一方で{FACTOR_NAMES[max_diff_factor]}に最も差があり、性格心理学の特性補完性研究では適度な差異が関係に新鮮さと成長をもたらすとされるため、互いの違いを強みとして活かしましょう。"
     )
 
     if scores_a['neuroticism'] > 60 and scores_b['neuroticism'] > 60:
-        advice_parts.append("二人とも感受性が高いため、感情の波を穏やかに受け止める姿勢が重要です。")
+        advice_parts.append("OCEANモデルの神経症的傾向（Neuroticism）が二人とも高く、感情の振幅が大きいカップルです。特性補完性の研究では感受性の高い者同士は共感力が強い反面、感情の連鎖増幅に注意が必要とされるため、穏やかに受け止め合う対話習慣を築きましょう。")
     elif scores_a['neuroticism'] < 40 and scores_b['neuroticism'] < 40:
-        advice_parts.append("二人とも感情的に安定しており、穏やかな関係を築きやすいでしょう。")
+        advice_parts.append("OCEANモデルの神経症的傾向（Neuroticism）が二人とも低く、感情的安定性の高いカップルです。ビッグファイブ研究では情緒安定性の高いペアは長期的な関係満足度が高いとされており、この強みを活かして穏やかで建設的な関係を築いていけるでしょう。")
 
     return {
         "name": "ビッグファイブ性格分析",
