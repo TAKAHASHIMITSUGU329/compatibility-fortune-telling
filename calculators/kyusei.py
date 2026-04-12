@@ -52,25 +52,25 @@ def _get_relationship(sei_a: int, sei_b: int) -> tuple:
     gogyo_b = GOGYO[sei_b]
 
     if gogyo_a == gogyo_b:
-        return ("比和", 4, f"同じ{gogyo_a}の属性同士。似た者同士で理解し合えますが、似すぎて衝突することも。")
+        return ("比和", 4, f"同じ{gogyo_a}の五行属性を持つ比和の関係で、価値観や行動パターンに深い共感が生まれます。似た者同士ゆえの衝突もありますが、五行の調和を意識して互いの個性を認め合うことで安定した関係を築けるでしょう。")
 
     # AがBを生む
     if SOJO.get(gogyo_a) == gogyo_b:
-        return ("相生（生じる側）", 5, f"{KYUSEI_NAMES[sei_a]}が{KYUSEI_NAMES[sei_b]}を育てる関係。自然な支援と成長があります。")
+        return ("相生（生じる側）", 5, f"五行相生の理に基づき、{KYUSEI_NAMES[sei_a]}が{KYUSEI_NAMES[sei_b]}を育てる最良の関係です。気のエネルギーが自然に流れ、支援と成長の循環が生まれます。この五行の恵みを活かし、互いの才能を伸ばし合いましょう。")
 
     # BがAを生む
     if SOJO.get(gogyo_b) == gogyo_a:
-        return ("相生（生じられる側）", 4, f"{KYUSEI_NAMES[sei_b]}が{KYUSEI_NAMES[sei_a]}を育てる関係。相手から多くを受け取れます。")
+        return ("相生（生じられる側）", 4, f"五行相生の流れにより、{KYUSEI_NAMES[sei_b]}が{KYUSEI_NAMES[sei_a]}を育てる関係です。相手から多くのエネルギーを受け取れる恵まれた相性なので、感謝の気持ちを忘れず、受けた恩恵を周囲にも広げていくことで運気がさらに向上します。")
 
     # AがBを剋す
     if SOKOKU.get(gogyo_a) == gogyo_b:
-        return ("相剋（剋す側）", 2, f"{KYUSEI_NAMES[sei_a]}が{KYUSEI_NAMES[sei_b]}を抑える関係。力関係に注意が必要です。")
+        return ("相剋（剋す側）", 2, f"五行相剋の関係により、{KYUSEI_NAMES[sei_a]}が{KYUSEI_NAMES[sei_b]}を抑える力学が働きやすい組み合わせです。力関係の偏りに注意し、相手の五行の気を尊重する姿勢を持つことで、相剋のエネルギーを建設的な刺激へと転換できます。")
 
     # BがAを剋す
     if SOKOKU.get(gogyo_b) == gogyo_a:
-        return ("相剋（剋される側）", 2, f"{KYUSEI_NAMES[sei_b]}が{KYUSEI_NAMES[sei_a]}を抑える関係。自分らしさを保つ工夫を。")
+        return ("相剋（剋される側）", 2, f"五行相剋の関係で、{KYUSEI_NAMES[sei_b]}が{KYUSEI_NAMES[sei_a]}を抑える力学が生じやすい組み合わせです。自分らしさを保つために、自身の五行の気を意識的に養い、対等なコミュニケーションを心がけることで関係は改善へ向かいます。")
 
-    return ("普通", 3, "特別な吉凶関係はない穏やかな相性です。")
+    return ("普通", 3, "五行の関係において特別な吉凶はなく、穏やかな相性です。九星気学では中庸の関係も大切にされており、互いの本命星の特性を理解し合うことで、安定した信頼関係を自然に育んでいけるでしょう。")
 
 
 def calculate(person_a: dict, person_b: dict) -> dict:

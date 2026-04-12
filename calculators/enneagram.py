@@ -107,7 +107,12 @@ def calculate(person_a: dict, person_b: dict) -> dict:
     score = compat.get("score", 3)
     score_100 = compat.get("score_100", 60)
     summary_text = compat.get("summary", "")
-    advice_text = compat.get("advice", "")
+    if score >= 4:
+        advice_text = f"エニアグラムの統合方向が示す通り、タイプ{type_a}とタイプ{type_b}は互いの成長を促す好相性です。それぞれの統合の方向へ向かう力が共鳴し合うため、安心感の中で自己成長が進みます。相手の強みを積極的に学び取りましょう。"
+    elif score >= 3:
+        advice_text = f"タイプ{type_a}とタイプ{type_b}のエニアグラム的相性は標準的で、互いの基本欲求の違いが学びの源泉となります。分裂方向への退行を防ぐためにも、ストレス時こそ対話を大切にし、相手の核心的動機を理解する姿勢が関係を深めます。"
+    else:
+        advice_text = f"タイプ{type_a}とタイプ{type_b}は基本的恐れや欲求の方向性に違いがあり、エニアグラム理論では挑戦的な組み合わせとされます。しかし各タイプの統合方向を意識し、互いの成長パスを尊重することで、深い変容と理解が生まれるでしょう。"
 
     name_a = person_a.get('name', 'Person A')
     name_b = person_b.get('name', 'Person B')

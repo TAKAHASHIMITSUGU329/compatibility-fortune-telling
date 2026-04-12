@@ -89,5 +89,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_a}: 協力度{coop_a} / 報復傾向{ret_a} / 許容度{forg_a}",
             f"{name_b}: 協力度{coop_b} / 報復傾向{ret_b} / 許容度{forg_b}",
         ] + isfj_note,
-        "advice": strategy,
+        "advice": f"ゲーム理論の囚人のジレンマモデルに基づく分析結果です。{strategy}。ナッシュ均衡の観点では、互いに協力を選び続ける「しっぺ返し戦略」が長期的に最も高い利得をもたらします。信頼の積み重ねと適度な許容が、二人の協力関係を安定させる鍵です。",
     }

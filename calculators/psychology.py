@@ -160,7 +160,7 @@ def calculate_disc(person_a: dict, person_b: dict) -> dict:
             f"{name_a}: {disc_a}型（{desc_a}）",
             f"{name_b}: {disc_b}型（{desc_b}）",
         ],
-        "advice": summary,
+        "advice": f"DiSC理論では{disc_a}型と{disc_b}型の行動特性から対人関係の傾向を分析します。{summary}。日常の意思決定場面で互いの行動スタイルを尊重し、補完し合うコミュニケーションを心がけましょう。",
     }
 
 
@@ -201,7 +201,7 @@ def calculate_attachment(person_a: dict, person_b: dict) -> dict:
             f"{name_a}: {style_a} — {desc_a}",
             f"{name_b}: {style_b} — {desc_b}",
         ],
-        "advice": summary,
+        "advice": f"ボウルビィの愛着理論に基づくと、{style_a}と{style_b}の組み合わせには固有のパターンがあります。{summary}。安全基地となる信頼関係を築くため、相手の愛着スタイルに合った安心感の伝え方を意識してみてください。",
     }
 
 

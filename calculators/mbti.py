@@ -99,14 +99,20 @@ def calculate(person_a: dict, person_b: dict) -> dict:
         score = compat.get("score", 3)
         score_100 = compat.get("score_100", 60)
         summary_text = compat.get("summary", "")
-        advice_text = compat.get("advice", "")
     else:
         # フォールバック: 共通文字数から簡易計算
         common = sum(1 for a, b in zip(type_a, type_b) if a == b)
         score = {0: 3, 1: 3, 2: 4, 3: 4, 4: 3}.get(common, 3)
         score_100 = {1: 20, 2: 40, 3: 60, 4: 80, 5: 95}.get(score, 60)
         summary_text = f"{type_a}と{type_b}の組み合わせ"
-        advice_text = "お互いの違いを理解し尊重することで、より良い関係を築けます。"
+
+    # 認知機能に基づくスコア別アドバイス
+    if score >= 4:
+        advice_text = f"{type_a}と{type_b}は認知機能の配列において高い親和性を持つ組み合わせです。主機能と補助機能が自然に補完し合うため、深い理解と共感が生まれやすいでしょう。互いの強みを活かした役割分担を意識するとさらに関係が発展します。"
+    elif score >= 3:
+        advice_text = f"{type_a}と{type_b}の認知機能には共通点と相違点がバランスよく存在します。異なる判断機能や知覚機能が新たな視点をもたらすため、相手の情報処理スタイルを尊重し、対話を通じて互いの世界観を広げていくことが関係深化の鍵です。"
+    else:
+        advice_text = f"{type_a}と{type_b}は認知機能の優先順位が大きく異なり、情報の捉え方や意思決定の方法に差が出やすい組み合わせです。しかしユング心理学では対極の機能こそ成長を促すとされるため、相手の視点を学ぶ姿勢が深い人間的成長につながります。"
 
     func_compat = _calculate_function_compatibility(type_a, type_b)
 

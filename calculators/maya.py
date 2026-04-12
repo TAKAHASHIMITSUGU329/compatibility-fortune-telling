@@ -157,5 +157,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_b}: Kin {kin_b} - {tone_name_b}{seal_name_b}（{seal_desc_b}）",
             f"ウェーブスペル: {name_a}={ws_name_a} / {name_b}={ws_name_b}{ws_label}",
         ],
-        "advice": relationship,
+        "advice": f"ツォルキン暦260日周期において、Kin{kin_a}({seal_name_a})とKin{kin_b}({seal_name_b})の関係は「{relationship}」を示します。マヤの宇宙観では各Kinが固有の使命を持つとされ、二人の太陽の紋章と銀河の音の組み合わせが関係性の質を決定づけます。互いのKinエネルギーを理解し、それぞれの紋章が持つ力を日常で意識的に活かしましょう。",
     }

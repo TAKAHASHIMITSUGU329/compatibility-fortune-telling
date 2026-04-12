@@ -223,11 +223,11 @@ def calculate(person_a: dict, person_b: dict) -> dict:
         highlights.append(f"⚠ {name_b}は現在「大殺界（{dai_period_b}）」の期間中。慎重な行動が求められます")
 
     # アドバイス
-    advice_parts = [compat_desc + "。"]
+    advice_parts = [compat_desc + "。六星占術では運命星と運命周期の組み合わせから二人の相性を読み解きます。"]
     if is_dai_a or is_dai_b:
-        advice_parts.append("大殺界の期間中は大きな決断を避け、現状維持を心がけましょう。")
+        advice_parts.append("大殺界は12年周期のうち3年間続く停滞期であり、この期間中は大きな決断を控え、内面の充実と現状維持を心がけましょう。嵐が過ぎれば運気は必ず好転します。")
     if pol_a != pol_b:
-        advice_parts.append("陰陽が異なるため、互いに補い合える良い組み合わせです。")
+        advice_parts.append("陰陽が異なる組み合わせは、六星占術において互いのエネルギーが自然に補完し合う好相性です。片方の弱みをもう片方が支える関係を意識しましょう。")
 
     return {
         "name": "六星占術",

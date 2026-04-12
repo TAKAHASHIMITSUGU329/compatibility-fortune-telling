@@ -162,5 +162,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_a}: {animal_a}（{group_a}グループ）— {trait_a}",
             f"{name_b}: {animal_b}（{group_b}グループ）— {trait_b}",
         ],
-        "advice": f"「動物占い何だった？」は会話のきっかけにも最適です。",
+        "advice": f"{animal_a}の「{trait_a}」と{animal_b}の「{trait_b}」という個性の組み合わせが、二人の関係に独自の色彩を与えています。動物占いが示す行動パターンの違いを知ることで相手への理解が深まるため、互いの動物キャラの特性を活かした付き合い方を意識してみましょう。",
     }

@@ -46,7 +46,14 @@ def calculate(person_a: dict, person_b: dict) -> dict:
     score = compat.get("score", 3)
     score_100 = compat.get("score_100", 60)
     summary_text = compat.get("summary", f"{bt_a}型と{bt_b}型の相性")
-    advice_text = compat.get("advice", "")
+    trait_desc_a = BLOOD_TYPE_TRAITS.get(bt_a, "")
+    trait_desc_b = BLOOD_TYPE_TRAITS.get(bt_b, "")
+    if score >= 4:
+        advice_text = f"{bt_a}型の「{trait_desc_a}」と{bt_b}型の「{trait_desc_b}」が自然に補い合う好相性です。血液型が示す気質の親和性が高いため、互いの長所を認め合い、リラックスした関係を楽しんでください。"
+    elif score >= 3:
+        advice_text = f"{bt_a}型の「{trait_desc_a}」と{bt_b}型の「{trait_desc_b}」は異なる特性を持ちますが、その違いが新鮮な刺激になります。血液型の気質差を理解した上で歩み寄ることで、バランスの取れた良い関係が築けるでしょう。"
+    else:
+        advice_text = f"{bt_a}型の「{trait_desc_a}」と{bt_b}型の「{trait_desc_b}」は気質に違いがあり、すれ違いが生じやすい面があります。しかし血液型の違いは多様な視点をもたらす強みでもあるため、相手の行動原理を理解する努力が関係改善の鍵です。"
 
     name_a = person_a.get('name', 'Person A')
     name_b = person_b.get('name', 'Person B')

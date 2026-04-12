@@ -229,7 +229,7 @@ def calculate(person_a: dict, person_b: dict) -> dict:
                 f"{direction}の意味: {meaning} - {desc}",
                 dist_note,
             ],
-            "advice": f"二人の間の{direction}方向は「{element}」の気。{love_desc}。",
+            "advice": f"風水の方位学では、二人の位置関係が示す{direction}方向は「{element}」の気を持ちます。{love_desc}。この方角のエネルギーを活かすには、{element}の気を象徴する色やインテリアを共有空間に取り入れると良いでしょう。",
         }
 
     # 出生地不明の場合：MBTIの五行推定でフォールバック
@@ -262,5 +262,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_b}の五行(MBTI推定): {elem_b}",
             "出生地を入力すると方角ベースの精密な分析が可能です",
         ],
-        "advice": summary,
+        "advice": f"風水五行論では{elem_a}と{elem_b}の相互作用から二人の気の流れを読み解きます。{summary}。五行の相生・相剋の理を理解し、互いのエレメントを調和させる生活環境づくりを意識してみてください。",
     }

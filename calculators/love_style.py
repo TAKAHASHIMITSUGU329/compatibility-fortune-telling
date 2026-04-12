@@ -91,5 +91,5 @@ def calculate(person_a: dict, person_b: dict) -> dict:
             f"{name_a}: {style1_a}（{STYLES[style1_a]}）/ 副: {style2_a}",
             f"{name_b}: {style1_b}（{STYLES[style1_b]}）/ 副: {style2_b}",
         ],
-        "advice": summary,
+        "advice": f"社会学者リーが提唱した6類型理論では、{style1_a}（{STYLES[style1_a]}）と{style1_b}（{STYLES[style1_b]}）の恋愛スタイルの相互作用を分析します。{summary}。互いの愛し方の違いを「個性」として受け入れ、相手のスタイルに寄り添う表現を取り入れてみてください。",
     }
