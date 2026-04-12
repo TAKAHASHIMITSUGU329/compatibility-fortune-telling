@@ -15,81 +15,101 @@ TEST_PATTERNS = [
     {
         "id": 1,
         "label": "全項目入力・黄金ペア(INTJ×ENFP)",
-        "a": {"name": "太郎", "birthday": "1990-04-15", "birth_time": "08:30",
+        "a": {"family_name": "", "given_name": "太郎", "family_name_kana": "", "given_name_kana": "タロウ",
+               "birthday": "1990-04-15", "birth_time": "08:30",
                "birthplace": "東京都新宿区", "mbti": "INTJ", "blood_type": "A型"},
-        "b": {"name": "花子", "birthday": "1992-08-23", "birth_time": "14:00",
+        "b": {"family_name": "", "given_name": "花子", "family_name_kana": "", "given_name_kana": "ハナコ",
+               "birthday": "1992-08-23", "birth_time": "14:00",
                "birthplace": "大阪府大阪市", "mbti": "ENFP", "blood_type": "O型"},
     },
     {
         "id": 2,
         "label": "必須項目のみ（任意項目すべて空）",
-        "a": {"name": "", "birthday": "1985-12-01", "birth_time": "",
+        "a": {"family_name": "", "given_name": "", "family_name_kana": "", "given_name_kana": "",
+               "birthday": "1985-12-01", "birth_time": "",
                "birthplace": "", "mbti": "ISFJ", "blood_type": ""},
-        "b": {"name": "", "birthday": "1987-03-14", "birth_time": "",
+        "b": {"family_name": "", "given_name": "", "family_name_kana": "", "given_name_kana": "",
+               "birthday": "1987-03-14", "birth_time": "",
                "birthplace": "", "mbti": "ESFP", "blood_type": ""},
     },
     {
         "id": 3,
         "label": "同じMBTI同士(INFP×INFP)",
-        "a": {"name": "健一", "birthday": "1995-01-10", "birth_time": "06:00",
+        "a": {"family_name": "", "given_name": "健一", "family_name_kana": "", "given_name_kana": "ケンイチ",
+               "birthday": "1995-01-10", "birth_time": "06:00",
                "birthplace": "北海道札幌市", "mbti": "INFP", "blood_type": "B型"},
-        "b": {"name": "美咲", "birthday": "1996-01-10", "birth_time": "22:30",
+        "b": {"family_name": "", "given_name": "美咲", "family_name_kana": "", "given_name_kana": "ミサキ",
+               "birthday": "1996-01-10", "birth_time": "22:30",
                "birthplace": "沖縄県那覇市", "mbti": "INFP", "blood_type": "AB型"},
     },
     {
         "id": 4,
         "label": "年齢差が大きいペア(28歳差)",
-        "a": {"name": "正雄", "birthday": "1970-07-07", "birth_time": "12:00",
+        "a": {"family_name": "", "given_name": "正雄", "family_name_kana": "", "given_name_kana": "マサオ",
+               "birthday": "1970-07-07", "birth_time": "12:00",
                "birthplace": "福岡県福岡市", "mbti": "ESTJ", "blood_type": "O型"},
-        "b": {"name": "さくら", "birthday": "1998-11-22", "birth_time": "03:15",
+        "b": {"family_name": "", "given_name": "さくら", "family_name_kana": "", "given_name_kana": "サクラ",
+               "birthday": "1998-11-22", "birth_time": "03:15",
                "birthplace": "東京都渋谷区", "mbti": "INFJ", "blood_type": "A型"},
     },
     {
         "id": 5,
         "label": "2000年代生まれ（若年層）",
-        "a": {"name": "蓮", "birthday": "2001-05-05", "birth_time": "",
+        "a": {"family_name": "", "given_name": "蓮", "family_name_kana": "", "given_name_kana": "レン",
+               "birthday": "2001-05-05", "birth_time": "",
                "birthplace": "神奈川県横浜市", "mbti": "ENTP", "blood_type": "AB型"},
-        "b": {"name": "陽葵", "birthday": "2003-09-30", "birth_time": "",
+        "b": {"family_name": "", "given_name": "陽葵", "family_name_kana": "", "given_name_kana": "ヒマリ",
+               "birthday": "2003-09-30", "birth_time": "",
                "birthplace": "愛知県名古屋市", "mbti": "ISFJ", "blood_type": "B型"},
     },
     {
         "id": 6,
         "label": "うるう年・境界日(2/29×12/31)",
-        "a": {"name": "翔", "birthday": "2000-02-29", "birth_time": "00:00",
+        "a": {"family_name": "", "given_name": "翔", "family_name_kana": "", "given_name_kana": "ショウ",
+               "birthday": "2000-02-29", "birth_time": "00:00",
                "birthplace": "京都府京都市", "mbti": "ISTP", "blood_type": "A型"},
-        "b": {"name": "凛", "birthday": "1999-12-31", "birth_time": "23:59",
+        "b": {"family_name": "", "given_name": "凛", "family_name_kana": "", "given_name_kana": "リン",
+               "birthday": "1999-12-31", "birth_time": "23:59",
                "birthplace": "兵庫県神戸市", "mbti": "ENFJ", "blood_type": "O型"},
     },
     {
         "id": 7,
         "label": "同じ誕生日（完全一致）",
-        "a": {"name": "大翔", "birthday": "1993-06-21", "birth_time": "10:00",
+        "a": {"family_name": "", "given_name": "大翔", "family_name_kana": "", "given_name_kana": "ヒロト",
+               "birthday": "1993-06-21", "birth_time": "10:00",
                "birthplace": "広島県広島市", "mbti": "ENTJ", "blood_type": "O型"},
-        "b": {"name": "結衣", "birthday": "1993-06-21", "birth_time": "16:00",
+        "b": {"family_name": "", "given_name": "結衣", "family_name_kana": "", "given_name_kana": "ユイ",
+               "birthday": "1993-06-21", "birth_time": "16:00",
                "birthplace": "宮城県仙台市", "mbti": "ISFP", "blood_type": "A型"},
     },
     {
         "id": 8,
         "label": "昭和生まれ（高年齢・1950年代）",
-        "a": {"name": "義男", "birthday": "1955-03-03", "birth_time": "05:45",
+        "a": {"family_name": "", "given_name": "義男", "family_name_kana": "", "given_name_kana": "ヨシオ",
+               "birthday": "1955-03-03", "birth_time": "05:45",
                "birthplace": "新潟県新潟市", "mbti": "ISTJ", "blood_type": "B型"},
-        "b": {"name": "和子", "birthday": "1958-10-18", "birth_time": "11:30",
+        "b": {"family_name": "", "given_name": "和子", "family_name_kana": "", "given_name_kana": "カズコ",
+               "birthday": "1958-10-18", "birth_time": "11:30",
                "birthplace": "長野県長野市", "mbti": "ESFJ", "blood_type": "A型"},
     },
     {
         "id": 9,
         "label": "正反対のMBTI(ESTP×INFJ)",
-        "a": {"name": "悠真", "birthday": "1988-08-08", "birth_time": "15:20",
+        "a": {"family_name": "", "given_name": "悠真", "family_name_kana": "", "given_name_kana": "ユウマ",
+               "birthday": "1988-08-08", "birth_time": "15:20",
                "birthplace": "千葉県千葉市", "mbti": "ESTP", "blood_type": "O型"},
-        "b": {"name": "芽依", "birthday": "1991-02-14", "birth_time": "09:45",
+        "b": {"family_name": "", "given_name": "芽依", "family_name_kana": "", "given_name_kana": "メイ",
+               "birthday": "1991-02-14", "birth_time": "09:45",
                "birthplace": "福岡県北九州市", "mbti": "INFJ", "blood_type": "AB型"},
     },
     {
         "id": 10,
         "label": "血液型のみ異なる類似ペア",
-        "a": {"name": "湊", "birthday": "1997-11-11", "birth_time": "07:00",
+        "a": {"family_name": "", "given_name": "湊", "family_name_kana": "", "given_name_kana": "ミナト",
+               "birthday": "1997-11-11", "birth_time": "07:00",
                "birthplace": "静岡県浜松市", "mbti": "ENFJ", "blood_type": "A型"},
-        "b": {"name": "杏", "birthday": "1997-11-12", "birth_time": "07:00",
+        "b": {"family_name": "", "given_name": "杏", "family_name_kana": "", "given_name_kana": "アン",
+               "birthday": "1997-11-12", "birth_time": "07:00",
                "birthplace": "静岡県浜松市", "mbti": "ENFJ", "blood_type": "B型"},
     },
 ]
@@ -111,11 +131,14 @@ def fill_and_submit(driver, pattern):
     wait.until(EC.presence_of_element_located((By.NAME, "a_birthday")))
 
     for prefix, person in [("a", pattern["a"]), ("b", pattern["b"])]:
-        # 名前
-        if person["name"]:
-            el = driver.find_element(By.NAME, f"{prefix}_name")
-            el.clear()
-            el.send_keys(person["name"])
+        # 名前（姓・名・姓カナ・名カナ）
+        for field_key, form_field in [("family_name", "family_name"), ("given_name", "given_name"),
+                                       ("family_name_kana", "family_name_kana"), ("given_name_kana", "given_name_kana")]:
+            val = person.get(field_key, "")
+            if val:
+                el = driver.find_element(By.NAME, f"{prefix}_{form_field}")
+                el.clear()
+                el.send_keys(val)
 
         # 生年月日
         el = driver.find_element(By.NAME, f"{prefix}_birthday")

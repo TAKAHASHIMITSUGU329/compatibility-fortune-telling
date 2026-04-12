@@ -13,7 +13,10 @@ from selenium.webdriver.chrome.options import Options
 BASE_URL = "http://localhost:5001"
 
 PERSON_A = {
-    "name": "貢",
+    "family_name": "高橋",
+    "given_name": "貢",
+    "family_name_kana": "タカハシ",
+    "given_name_kana": "ミツグ",
     "birthday": "1979-06-03",
     "birth_time": "21:05",
     "birthplace": "秋田県大仙市",
@@ -21,7 +24,10 @@ PERSON_A = {
     "blood_type": "AB型",
 }
 PERSON_B = {
-    "name": "浩代",
+    "family_name": "高橋",
+    "given_name": "浩代",
+    "family_name_kana": "タカハシ",
+    "given_name_kana": "ヒロヨ",
     "birthday": "1972-11-14",
     "birth_time": "01:44",
     "birthplace": "福島県双葉郡双葉町",
@@ -58,9 +64,13 @@ def main():
 
         # --- 男性（貢さん）---
         print("\n[入力中] 男性: 貢さん")
-        el = driver.find_element(By.NAME, "a_name")
-        slow_type(el, PERSON_A["name"])
-        time.sleep(0.3)
+        for field_key, form_field in [("family_name", "a_family_name"), ("given_name", "a_given_name"),
+                                       ("family_name_kana", "a_family_name_kana"), ("given_name_kana", "a_given_name_kana")]:
+            val = PERSON_A.get(field_key, "")
+            if val:
+                el = driver.find_element(By.NAME, form_field)
+                slow_type(el, val)
+                time.sleep(0.3)
 
         el = driver.find_element(By.NAME, "a_birthday")
         driver.execute_script(
@@ -93,9 +103,13 @@ def main():
 
         # --- 女性（浩代さん）---
         print("[入力中] 女性: 浩代さん")
-        el = driver.find_element(By.NAME, "b_name")
-        slow_type(el, PERSON_B["name"])
-        time.sleep(0.3)
+        for field_key, form_field in [("family_name", "b_family_name"), ("given_name", "b_given_name"),
+                                       ("family_name_kana", "b_family_name_kana"), ("given_name_kana", "b_given_name_kana")]:
+            val = PERSON_B.get(field_key, "")
+            if val:
+                el = driver.find_element(By.NAME, form_field)
+                slow_type(el, val)
+                time.sleep(0.3)
 
         el = driver.find_element(By.NAME, "b_birthday")
         driver.execute_script(

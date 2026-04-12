@@ -22,45 +22,55 @@ MARRIED_COUPLES = [
         "id": 1,
         "label": "【継続】ヒロミ × 松本伊代（1993年〜）",
         "group": "married",
-        "a": {"name": "ヒロミ", "birthday": "1965-02-13", "birth_time": "",
+        "a": {"family_name": "", "given_name": "ヒロミ", "family_name_kana": "", "given_name_kana": "ヒロミ",
+               "birthday": "1965-02-13", "birth_time": "",
                "birthplace": "東京都八王子市", "mbti": "ESTP", "blood_type": "A型"},
-        "b": {"name": "松本伊代", "birthday": "1965-06-02", "birth_time": "",
+        "b": {"family_name": "松本", "given_name": "伊代", "family_name_kana": "マツモト", "given_name_kana": "イヨ",
+               "birthday": "1965-06-02", "birth_time": "",
                "birthplace": "東京都大田区", "mbti": "ESFP", "blood_type": "B型"},
     },
     {
         "id": 2,
         "label": "【継続】佐々木健介 × 北斗晶（1995年〜）",
         "group": "married",
-        "a": {"name": "佐々木健介", "birthday": "1966-08-04", "birth_time": "",
+        "a": {"family_name": "佐々木", "given_name": "健介", "family_name_kana": "ササキ", "given_name_kana": "ケンスケ",
+               "birthday": "1966-08-04", "birth_time": "",
                "birthplace": "福岡県福岡市", "mbti": "ISFJ", "blood_type": "AB型"},
-        "b": {"name": "北斗晶", "birthday": "1967-07-13", "birth_time": "",
+        "b": {"family_name": "北斗", "given_name": "晶", "family_name_kana": "ホクト", "given_name_kana": "アキラ",
+               "birthday": "1967-07-13", "birth_time": "",
                "birthplace": "埼玉県吉川市", "mbti": "ESTJ", "blood_type": "O型"},
     },
     {
         "id": 3,
         "label": "【継続】唐沢寿明 × 山口智子（1995年〜）",
         "group": "married",
-        "a": {"name": "唐沢寿明", "birthday": "1963-06-03", "birth_time": "",
+        "a": {"family_name": "唐沢", "given_name": "寿明", "family_name_kana": "カラサワ", "given_name_kana": "トシアキ",
+               "birthday": "1963-06-03", "birth_time": "",
                "birthplace": "東京都", "mbti": "ISTP", "blood_type": "A型"},
-        "b": {"name": "山口智子", "birthday": "1964-10-20", "birth_time": "",
+        "b": {"family_name": "山口", "given_name": "智子", "family_name_kana": "ヤマグチ", "given_name_kana": "トモコ",
+               "birthday": "1964-10-20", "birth_time": "",
                "birthplace": "栃木県栃木市", "mbti": "ENFP", "blood_type": "A型"},
     },
     {
         "id": 4,
         "label": "【継続】三浦友和 × 山口百恵（1980年〜）",
         "group": "married",
-        "a": {"name": "三浦友和", "birthday": "1952-01-28", "birth_time": "",
+        "a": {"family_name": "三浦", "given_name": "友和", "family_name_kana": "ミウラ", "given_name_kana": "トモカズ",
+               "birthday": "1952-01-28", "birth_time": "",
                "birthplace": "山梨県甲府市", "mbti": "ISFP", "blood_type": "A型"},
-        "b": {"name": "山口百恵", "birthday": "1959-01-17", "birth_time": "",
+        "b": {"family_name": "山口", "given_name": "百恵", "family_name_kana": "ヤマグチ", "given_name_kana": "モモエ",
+               "birthday": "1959-01-17", "birth_time": "",
                "birthplace": "神奈川県横須賀市", "mbti": "INFJ", "blood_type": "A型"},
     },
     {
         "id": 5,
         "label": "【継続】DAIGO × 北川景子（2016年〜）",
         "group": "married",
-        "a": {"name": "DAIGO", "birthday": "1978-04-08", "birth_time": "",
+        "a": {"family_name": "", "given_name": "DAIGO", "family_name_kana": "", "given_name_kana": "ダイゴ",
+               "birthday": "1978-04-08", "birth_time": "",
                "birthplace": "東京都", "mbti": "ENFP", "blood_type": "AB型"},
-        "b": {"name": "北川景子", "birthday": "1986-08-22", "birth_time": "",
+        "b": {"family_name": "北川", "given_name": "景子", "family_name_kana": "キタガワ", "given_name_kana": "ケイコ",
+               "birthday": "1986-08-22", "birth_time": "",
                "birthplace": "兵庫県神戸市", "mbti": "ENTJ", "blood_type": "O型"},
     },
 ]
@@ -71,45 +81,55 @@ DIVORCED_COUPLES = [
         "id": 6,
         "label": "【離婚】東出昌大 × 杏（2015〜2020）",
         "group": "divorced",
-        "a": {"name": "東出昌大", "birthday": "1988-02-01", "birth_time": "",
+        "a": {"family_name": "東出", "given_name": "昌大", "family_name_kana": "ヒガシデ", "given_name_kana": "マサヒロ",
+               "birthday": "1988-02-01", "birth_time": "",
                "birthplace": "埼玉県", "mbti": "ISFP", "blood_type": "A型"},
-        "b": {"name": "杏", "birthday": "1986-04-14", "birth_time": "",
+        "b": {"family_name": "", "given_name": "杏", "family_name_kana": "", "given_name_kana": "アン",
+               "birthday": "1986-04-14", "birth_time": "",
                "birthplace": "東京都", "mbti": "ISTJ", "blood_type": "A型"},
     },
     {
         "id": 7,
         "label": "【離婚】小室哲哉 × KEIKO（2002〜2021）",
         "group": "divorced",
-        "a": {"name": "小室哲哉", "birthday": "1958-11-27", "birth_time": "",
+        "a": {"family_name": "小室", "given_name": "哲哉", "family_name_kana": "コムロ", "given_name_kana": "テツヤ",
+               "birthday": "1958-11-27", "birth_time": "",
                "birthplace": "東京都府中市", "mbti": "ENTP", "blood_type": "O型"},
-        "b": {"name": "KEIKO", "birthday": "1972-08-18", "birth_time": "",
+        "b": {"family_name": "", "given_name": "KEIKO", "family_name_kana": "", "given_name_kana": "ケイコ",
+               "birthday": "1972-08-18", "birth_time": "",
                "birthplace": "大分県臼杵市", "mbti": "ESFJ", "blood_type": "A型"},
     },
     {
         "id": 8,
         "label": "【離婚】神田正輝 × 松田聖子（1985〜1997）",
         "group": "divorced",
-        "a": {"name": "神田正輝", "birthday": "1950-12-21", "birth_time": "",
+        "a": {"family_name": "神田", "given_name": "正輝", "family_name_kana": "カンダ", "given_name_kana": "マサキ",
+               "birthday": "1950-12-21", "birth_time": "",
                "birthplace": "東京都", "mbti": "ISTJ", "blood_type": "A型"},
-        "b": {"name": "松田聖子", "birthday": "1962-03-10", "birth_time": "",
+        "b": {"family_name": "松田", "given_name": "聖子", "family_name_kana": "マツダ", "given_name_kana": "セイコ",
+               "birthday": "1962-03-10", "birth_time": "",
                "birthplace": "福岡県久留米市", "mbti": "ESFP", "blood_type": "A型"},
     },
     {
         "id": 9,
         "label": "【離婚】陣内智則 × 藤原紀香（2007〜2009）",
         "group": "divorced",
-        "a": {"name": "陣内智則", "birthday": "1974-02-22", "birth_time": "",
+        "a": {"family_name": "陣内", "given_name": "智則", "family_name_kana": "ジンナイ", "given_name_kana": "トモノリ",
+               "birthday": "1974-02-22", "birth_time": "",
                "birthplace": "兵庫県加古川市", "mbti": "ENFP", "blood_type": "B型"},
-        "b": {"name": "藤原紀香", "birthday": "1971-06-28", "birth_time": "",
+        "b": {"family_name": "藤原", "given_name": "紀香", "family_name_kana": "フジワラ", "given_name_kana": "ノリカ",
+               "birthday": "1971-06-28", "birth_time": "",
                "birthplace": "兵庫県西宮市", "mbti": "ESTJ", "blood_type": "A型"},
     },
     {
         "id": 10,
         "label": "【離婚】高橋ジョージ × 三船美佳（1999〜2016）",
         "group": "divorced",
-        "a": {"name": "高橋ジョージ", "birthday": "1958-09-26", "birth_time": "",
+        "a": {"family_name": "高橋", "given_name": "ジョージ", "family_name_kana": "タカハシ", "given_name_kana": "ジョージ",
+               "birthday": "1958-09-26", "birth_time": "",
                "birthplace": "宮城県", "mbti": "ESTP", "blood_type": "A型"},
-        "b": {"name": "三船美佳", "birthday": "1982-09-12", "birth_time": "",
+        "b": {"family_name": "三船", "given_name": "美佳", "family_name_kana": "ミフネ", "given_name_kana": "ミカ",
+               "birthday": "1982-09-12", "birth_time": "",
                "birthplace": "東京都", "mbti": "ESFP", "blood_type": "A型"},
     },
 ]
@@ -146,15 +166,18 @@ def fill_and_submit(driver, pattern, visible=False):
         time.sleep(0.5)
 
     for prefix, person in [("a", pattern["a"]), ("b", pattern["b"])]:
-        # 名前
-        if person["name"]:
-            el = driver.find_element(By.NAME, f"{prefix}_name")
-            if visible:
-                slow_type(el, person["name"])
-                time.sleep(0.2)
-            else:
-                el.clear()
-                el.send_keys(person["name"])
+        # 名前（姓・名・姓カナ・名カナ）
+        for field_key, form_field in [("family_name", "family_name"), ("given_name", "given_name"),
+                                       ("family_name_kana", "family_name_kana"), ("given_name_kana", "given_name_kana")]:
+            val = person.get(field_key, "")
+            if val:
+                el = driver.find_element(By.NAME, f"{prefix}_{form_field}")
+                if visible:
+                    slow_type(el, val)
+                    time.sleep(0.2)
+                else:
+                    el.clear()
+                    el.send_keys(val)
 
         # 生年月日
         el = driver.find_element(By.NAME, f"{prefix}_birthday")
