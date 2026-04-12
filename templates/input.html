@@ -35,9 +35,25 @@
                         <h2 class="text-xl font-headline font-semibold text-on-surface">男性</h2>
                     </div>
                     <div class="space-y-5">
-                        <div>
-                            <label for="a_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
-                            <input id="a_name" name="a_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：太郎" type="text" value="{{ person_a.name if person_a else '' }}"/>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="a_family_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">姓</label>
+                                <input id="a_family_name" name="a_family_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：高橋" type="text" value="{{ person_a.family_name if person_a and person_a.family_name else '' }}"/>
+                            </div>
+                            <div>
+                                <label for="a_given_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">名</label>
+                                <input id="a_given_name" name="a_given_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：太郎" type="text" value="{{ person_a.given_name if person_a and person_a.given_name else '' }}"/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="a_family_name_kana" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">姓（ふりがな）</label>
+                                <input id="a_family_name_kana" name="a_family_name_kana" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：たかはし" type="text" value="{{ person_a.family_name_kana if person_a and person_a.family_name_kana else '' }}"/>
+                            </div>
+                            <div>
+                                <label for="a_given_name_kana" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">名（ふりがな）</label>
+                                <input id="a_given_name_kana" name="a_given_name_kana" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：たろう" type="text" value="{{ person_a.given_name_kana if person_a and person_a.given_name_kana else '' }}"/>
+                            </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -88,9 +104,25 @@
                         <h2 class="text-xl font-headline font-semibold text-on-surface">女性</h2>
                     </div>
                     <div class="space-y-5">
-                        <div>
-                            <label for="b_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">お名前</label>
-                            <input id="b_name" name="b_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：花子" type="text" value="{{ person_b.name if person_b else '' }}"/>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="b_family_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">姓</label>
+                                <input id="b_family_name" name="b_family_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：鈴木" type="text" value="{{ person_b.family_name if person_b and person_b.family_name else '' }}"/>
+                            </div>
+                            <div>
+                                <label for="b_given_name" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">名</label>
+                                <input id="b_given_name" name="b_given_name" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：花子" type="text" value="{{ person_b.given_name if person_b and person_b.given_name else '' }}"/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="b_family_name_kana" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">姓（ふりがな）</label>
+                                <input id="b_family_name_kana" name="b_family_name_kana" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：すずき" type="text" value="{{ person_b.family_name_kana if person_b and person_b.family_name_kana else '' }}"/>
+                            </div>
+                            <div>
+                                <label for="b_given_name_kana" class="block text-xs font-bold text-on-surface-variant mb-2 tracking-wider">名（ふりがな）</label>
+                                <input id="b_given_name_kana" name="b_given_name_kana" class="w-full bg-surface-container-low ghost-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-tertiary-fixed outline-none transition-all placeholder:text-outline/50" placeholder="例：はなこ" type="text" value="{{ person_b.given_name_kana if person_b and person_b.given_name_kana else '' }}"/>
+                            </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>

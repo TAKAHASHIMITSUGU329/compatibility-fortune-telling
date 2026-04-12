@@ -48,7 +48,7 @@ from calculators import (
     birthday_flower, nijushisekki, biorhythm, astrology, shichusuimei,
     shukuyo, socionics, psychology, doubutsu, maya, love_style,
     game_theory, fusui, rokusei, kabbalah, bigfive, sanmeigaku,
-    shibi, jyotish, love_map,
+    shibi, jyotish, love_map, seimei,
 )
 
 # (calculate関数, 所属モジュール) のペアリスト
@@ -90,6 +90,8 @@ ALL_CALCULATORS = [
     (shibi.calculate, shibi),
     (jyotish.calculate, jyotish),
     (love_map.calculate, love_map),
+    # Phase 5
+    (seimei.calculate, seimei),
 ]
 
 

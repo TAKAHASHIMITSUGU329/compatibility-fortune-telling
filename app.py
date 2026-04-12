@@ -26,7 +26,10 @@ BLOOD_TYPES = ["A型", "B型", "O型", "AB型"]
 
 def _parse_person(prefix: str) -> dict:
     """フォームデータからpersonデータを抽出"""
-    name = request.form.get(f"{prefix}_name", "").strip()
+    family_name = request.form.get(f"{prefix}_family_name", "").strip()
+    given_name = request.form.get(f"{prefix}_given_name", "").strip()
+    family_name_kana = request.form.get(f"{prefix}_family_name_kana", "").strip()
+    given_name_kana = request.form.get(f"{prefix}_given_name_kana", "").strip()
     birthday_str = request.form.get(f"{prefix}_birthday", "")
     birth_time = request.form.get(f"{prefix}_birth_time", "").strip()
     birthplace = request.form.get(f"{prefix}_birthplace", "").strip()
@@ -34,6 +37,14 @@ def _parse_person(prefix: str) -> dict:
     blood_type = request.form.get(f"{prefix}_blood_type", "").strip()
     enneagram = request.form.get(f"{prefix}_enneagram", "").strip()
     wing = request.form.get(f"{prefix}_wing", "").strip()
+
+    # 表示用の名前を組み立て
+    if family_name and given_name:
+        name = f"{family_name} {given_name}"
+    elif family_name or given_name:
+        name = family_name or given_name
+    else:
+        name = "男性" if prefix == "a" else "女性"
 
     # 生年月日のパース
     birthday = None
@@ -45,7 +56,11 @@ def _parse_person(prefix: str) -> dict:
             pass
 
     return {
-        "name": name or ("男性" if prefix == "a" else "女性"),
+        "name": name,
+        "family_name": family_name or None,
+        "given_name": given_name or None,
+        "family_name_kana": family_name_kana or None,
+        "given_name_kana": given_name_kana or None,
         "birthday": birthday,
         "birth_time": birth_time or None,
         "birthplace": birthplace or None,
