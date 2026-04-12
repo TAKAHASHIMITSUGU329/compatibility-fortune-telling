@@ -9,58 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script>
       tailwind.config = {
-        darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-              "on-tertiary-fixed": "#25181e",
-              "on-secondary": "#ffffff",
-              "on-primary-container": "#8690ee",
-              "primary": "#000666",
-              "surface-container": "#eeeef0",
-              "primary-container": "#1a237e",
-              "surface-container-high": "#e8e8ea",
-              "surface-variant": "#e2e2e4",
-              "on-error": "#ffffff",
-              "on-tertiary-container": "#a7929a",
-              "inverse-on-surface": "#f0f0f2",
-              "inverse-surface": "#2f3132",
-              "surface-container-highest": "#e2e2e4",
-              "tertiary-container": "#3a2c32",
-              "tertiary-fixed": "#f4dce4",
-              "inverse-primary": "#bdc2ff",
-              "on-tertiary-fixed-variant": "#524249",
-              "on-surface-variant": "#454652",
-              "secondary": "#526069",
-              "background": "#f9f9fb",
-              "surface-container-lowest": "#ffffff",
-              "surface": "#f9f9fb",
-              "tertiary": "#24171d",
-              "on-primary": "#ffffff",
-              "secondary-fixed-dim": "#bac9d3",
-              "primary-fixed-dim": "#bdc2ff",
-              "on-secondary-fixed": "#0f1d25",
-              "secondary-fixed": "#d6e5ef",
-              "on-primary-fixed-variant": "#343d96",
-              "on-secondary-container": "#56656e",
-              "surface-bright": "#f9f9fb",
-              "on-error-container": "#93000a",
-              "on-surface": "#1a1c1d",
-              "tertiary-fixed-dim": "#d7c1c8",
-              "surface-dim": "#d9dadc",
-              "on-tertiary": "#ffffff",
-              "primary-fixed": "#e0e0ff",
-              "on-background": "#1a1c1d",
-              "secondary-container": "#d3e2ed",
-              "surface-container-low": "#f3f3f5",
-              "on-secondary-fixed-variant": "#3b4951",
-              "error": "#ba1a1a",
-              "error-container": "#ffdad6",
-              "surface-tint": "#4c56af",
-              "outline": "#767683",
-              "on-primary-fixed": "#000767",
-              "outline-variant": "#c6c5d4"
-            },
             "borderRadius": {
               "DEFAULT": "0.25rem",
               "lg": "0.5rem",
@@ -80,17 +30,69 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body { font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif; }
-        .editorial-shadow { box-shadow: 0px 12px 32px rgba(26, 35, 126, 0.06); }
-        .soul-gradient { background: linear-gradient(135deg, #000666 0%, #8690ee 100%); }
-        .ghost-border { border: 1px solid rgba(198, 197, 212, 0.2); }
+        /* Mystical Premium Base Theme */
+        html, body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(170deg, #0a0a1a 0%, #010733 40%, #0d0d2b 70%, #0a0a1a 100%) !important;
+            color: #e8e8f0 !important;
+            min-height: 100vh;
+        }
+        /* Utility Classes */
+        .gold { color: #D4AF37; }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #f5e6a3 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-btn { background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%); color: #0a0a1a; }
+        .gold-border { border: 1px solid rgba(212,175,55,0.25); }
+        .gold-border-hover:hover { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 20px rgba(212,175,55,0.1); }
+        .mystic-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(212,175,55,0.15);
+            backdrop-filter: blur(8px);
+        }
+        .mystic-card-hover:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: 0 0 30px rgba(212,175,55,0.08);
+        }
+        .cosmic-bg {
+            background:
+                radial-gradient(1px 1px at 10% 20%, rgba(212,175,55,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 30% 60%, rgba(189,194,255,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 50% 10%, rgba(212,175,55,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 70% 80%, rgba(189,194,255,0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 90% 40%, rgba(212,175,55,0.35) 0%, transparent 100%),
+                radial-gradient(2px 2px at 15% 85%, rgba(212,175,55,0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 85% 15%, rgba(189,194,255,0.25) 0%, transparent 100%);
+        }
+        .mystic-input {
+            background: rgba(255,255,255,0.06) !important;
+            border: 1px solid rgba(212,175,55,0.15) !important;
+            color: #e8e8f0 !important;
+        }
+        .mystic-input:focus {
+            border-color: rgba(212,175,55,0.5) !important;
+            box-shadow: 0 0 0 2px rgba(212,175,55,0.15) !important;
+            outline: none !important;
+        }
+        .mystic-input::placeholder { color: rgba(232,232,240,0.3) !important; }
+        .mystic-select {
+            background: rgba(255,255,255,0.06) !important;
+            border: 1px solid rgba(212,175,55,0.15) !important;
+            color: #e8e8f0 !important;
+        }
+        .mystic-select:focus {
+            border-color: rgba(212,175,55,0.5) !important;
+            box-shadow: 0 0 0 2px rgba(212,175,55,0.15) !important;
+            outline: none !important;
+        }
+        .editorial-shadow { box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.3); }
+        .ghost-border { border: 1px solid rgba(212,175,55,0.12); }
     </style>
     <style media="print">
         @media print {
             header, footer, .fixed, .no-print { display: none !important; }
-            body { background: white; font-size: 12px; }
+            body { background: white !important; color: black !important; font-size: 12px; }
             .editorial-shadow { box-shadow: none; }
-            .soul-gradient { background: #333; }
+            .mystic-card { background: white; border: 1px solid #ccc; }
             details { break-inside: avoid; }
             details[open] > div { display: block; }
             canvas { max-width: 300px; max-height: 300px; }
@@ -98,13 +100,15 @@
     </style>
     {% block extra_head %}{% endblock %}
 </head>
-<body class="bg-surface text-on-surface min-h-screen flex flex-col {% block body_class %}{% endblock %}">
+<body class="min-h-screen flex flex-col">
     <!-- TopAppBar -->
-    <header class="bg-indigo-950/80 backdrop-blur-xl text-indigo-50 fixed top-0 w-full z-50 shadow-[0px_12px_32px_rgba(26,35,126,0.06)]">
+    <header class="fixed top-0 w-full z-50" style="background: rgba(10,10,26,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(212,175,55,0.1);">
         <div class="flex justify-between items-center px-6 py-4 w-full">
-            <a href="/" class="text-2xl font-light text-white tracking-widest font-headline">The Celestial Editorial</a>
+            <a href="/" class="text-2xl font-light text-white tracking-widest font-headline">
+                <span class="gold">&#10022;</span> The Celestial Editorial
+            </a>
             <nav class="hidden md:flex gap-8 items-center">
-                <a class="text-white font-bold hover:opacity-80 transition-opacity" href="/">Readings</a>
+                <a class="gold font-bold hover:opacity-80 transition-opacity text-sm tracking-wider" href="/">Readings</a>
             </nav>
         </div>
     </header>
@@ -114,15 +118,15 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#f3f3f5] w-full py-8 px-8 mt-auto">
+    <footer class="w-full py-8 px-8 mt-auto" style="background: rgba(10,10,26,0.8); border-top: 1px solid rgba(212,175,55,0.1);">
         <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
-            <div class="text-lg font-bold text-[#454652] font-headline">The Celestial Editorial</div>
-            <div class="text-[#454652] text-xs font-label">Phase 1 MVP</div>
+            <div class="text-lg font-bold font-headline gold">The Celestial Editorial</div>
+            <div class="text-indigo-300/40 text-xs font-label">Phase 1 MVP</div>
         </div>
     </footer>
 
     <!-- Decorative Bottom Gradient -->
-    <div class="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-on-primary-container to-tertiary-fixed z-50 md:block hidden"></div>
+    <div class="fixed bottom-0 left-0 w-full h-1 z-50 md:block hidden" style="background: linear-gradient(90deg, #D4AF37, #010766, #D4AF37);"></div>
 
     {% block extra_scripts %}{% endblock %}
 </body>
