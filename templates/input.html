@@ -77,7 +77,7 @@
                             <div>
                                 <label for="a_mbti" class="block text-xs font-bold gold mb-2 tracking-wider">MBTI</label>
                                 <select id="a_mbti" name="a_mbti" class="w-full mystic-select rounded-lg px-4 py-3 transition-all appearance-none">
-                                    <option selected value="">選択してください</option>
+                                    <option selected value="">— 選択 —</option>
                                     {% for t in mbti_types %}
                                     <option value="{{ t }}" {% if person_a and person_a.mbti == t %}selected{% endif %}>{{ t }}</option>
                                     {% endfor %}
@@ -86,7 +86,7 @@
                             <div>
                                 <label for="a_blood_type" class="block text-xs font-bold text-indigo-300/60 mb-2 tracking-wider">血液型</label>
                                 <select id="a_blood_type" name="a_blood_type" class="w-full mystic-select rounded-lg px-4 py-3 transition-all appearance-none">
-                                    <option selected value="">選択してください</option>
+                                    <option selected value="">— 選択 —</option>
                                     {% for bt in blood_types %}
                                     <option value="{{ bt }}" {% if person_a and person_a.blood_type == bt %}selected{% endif %}>{{ bt }}</option>
                                     {% endfor %}
@@ -145,7 +145,7 @@
                             <div>
                                 <label for="b_mbti" class="block text-xs font-bold gold mb-2 tracking-wider">MBTI</label>
                                 <select id="b_mbti" name="b_mbti" class="w-full mystic-select rounded-lg px-4 py-3 transition-all appearance-none">
-                                    <option selected value="">選択してください</option>
+                                    <option selected value="">— 選択 —</option>
                                     {% for t in mbti_types %}
                                     <option value="{{ t }}" {% if person_b and person_b.mbti == t %}selected{% endif %}>{{ t }}</option>
                                     {% endfor %}
@@ -154,7 +154,7 @@
                             <div>
                                 <label for="b_blood_type" class="block text-xs font-bold text-indigo-300/60 mb-2 tracking-wider">血液型</label>
                                 <select id="b_blood_type" name="b_blood_type" class="w-full mystic-select rounded-lg px-4 py-3 transition-all appearance-none">
-                                    <option selected value="">選択してください</option>
+                                    <option selected value="">— 選択 —</option>
                                     {% for bt in blood_types %}
                                     <option value="{{ bt }}" {% if person_b and person_b.blood_type == bt %}selected{% endif %}>{{ bt }}</option>
                                     {% endfor %}

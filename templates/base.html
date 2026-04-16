@@ -75,9 +75,19 @@
         }
         .mystic-input::placeholder { color: rgba(232,232,240,0.3) !important; }
         .mystic-select {
-            background: rgba(255,255,255,0.06) !important;
+            background-color: rgba(255,255,255,0.06) !important;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23D4AF37'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z' clip-rule='evenodd' /%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 0.75rem center !important;
+            background-size: 1.1rem 1.1rem !important;
             border: 1px solid rgba(212,175,55,0.15) !important;
             color: #e8e8f0 !important;
+            padding-right: 2.5rem !important;
+            text-overflow: ellipsis;
+        }
+        .mystic-select option {
+            background-color: #0a0a1a;
+            color: #e8e8f0;
         }
         .mystic-select:focus {
             border-color: rgba(212,175,55,0.5) !important;
